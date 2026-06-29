@@ -39,7 +39,7 @@
             <!-- login : connexion -->
             <form method="POST" action="login-register.php?action=login">
                 <h3>Connexion</h3>
-                <input type="email" name="email" placeholder="Email" ><br><br>
+                <input type="text" name="identifiant" placeholder="Email ou pseudo"><br><br>
                 <input type="password" name="password" placeholder="Mot de passe"><br><br>
                 <button>Se connecter</button>
             </form><br><br>
@@ -64,10 +64,12 @@
                 <?php endif; ?>
 
 
-                <input type="text" name="name" placeholder="Votre nom" ><br><br>
+                <input type="text" name="pseudo" placeholder="Votre pseudo" ><br><br>
                 <input type="email" name="email" placeholder="Email" ><br><br>
                 <input type="password" name="password" placeholder="Mot de passe" ><br><br>
+
                 <button>S'inscrire</button>
+
             </form>
         </div>
 

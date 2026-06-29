@@ -47,12 +47,12 @@ switch ($action){
 
         $user = new utilisateur();
 
-        $name     = trim($_POST["name"] ?? "");
+        $pseudo   = trim($_POST["pseudo"] ?? "");
         $email    = trim($_POST["email"] ?? "");
         $password = trim($_POST["password"] ?? "");
 
         // verifier si tous les champs sont remplis
-        if (empty($name) || empty($email) || empty($password)) {
+        if (empty($pseudo) || empty($email) || empty($password)) {
             $_SESSION["error_register"] = "Tous les champs sont obligatoires ❌";
             header("Location: accueil.php");
             exit;
@@ -68,10 +68,10 @@ switch ($action){
             exit;
         }
 
-        //verifier nom valide avec regex
-        if (!preg_match("/^[a-zA-ZÀ-ÿ -]{2,50}$/", $name)) {
+        //verifier pseudo valide avec regex
+        if (!preg_match("/^[a-zA-ZÀ-ÿ -]{2,50}$/", $pseudo)) {
 
-            $_SESSION["error_register"] = "Nom invalide ❌";
+            $_SESSION["error_register"] = "pseudo invalide ❌";
 
             header("Location: accueil.php");
             exit;
@@ -88,7 +88,7 @@ switch ($action){
         }
 
         //assigner les parametre de l'utilisateur
-        $user->set("nom", $name);
+        $user->set("nom", $pseudo);
         $user->set("email", $email);
         $user->set("mdp", $password);
 
