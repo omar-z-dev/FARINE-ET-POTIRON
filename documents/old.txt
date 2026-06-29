@@ -1,0 +1,42 @@
+1. new FormData(this)
+
+this à l'intérieur de addEventListener('submit', function(e) { ... }) représente le formulaire qui a déclenché l'événement (votre <form id="message-a-saisir">).
+
+FormData est une fonction JavaScript intégrée qui parcourt automatiquement tous les champs du formulaire (inputs, textarea, selects, etc.) et construit un jeu de données prêt à être envoyé en HTTP.
+
+Cela évite de devoir récupérer manuellement chaque champ (ex : document.querySelector('textarea[name="message"]').value).
+
+Exemple : si votre formulaire contient <textarea name="message"> et <input type="hidden" name="nom">, formData contiendra automatiquement message et nom avec leurs valeurs.
+
+2. fetch( url, { method: "POST", body: formData } )
+
+fetch est une fonction moderne pour envoyer des requêtes réseau (AJAX) sans recharger la page.
+
+url = "traiter-message.php" : le script PHP qui va traiter les données (votre script d'insertion).
+
+method: "POST" : on envoie les données via la méthode HTTP POST (comme un formulaire classique).
+
+body: formData : on transmet les données collectées du formulaire dans le corps de la requête.
+
+Que se passe-t‑il ?
+Le navigateur envoie silencieusement les données à traiter-message.php (en arrière‑plan).
+
+La page ne bouge pas (pas de rechargement, pas de page blanche).
+
+traiter-message.php reçoit les variables $_POST["message"] et $_POST["nom"] comme si un formulaire normal avait été soumis.
+
+Le script PHP insère le message dans la base de données.
+
+Une réponse (par exemple "OK") est retournée au JavaScript.
+
+Avantage par rapport à un formulaire classique
+Sans FormData + fetch : le formulaire avec action="traiter-message.php" method="post" entraînerait un rechargement complet de la page → vous auriez une page blanche si le script PHP n’affiche rien ou ne redirige pas.
+
+Avec FormData + fetch : tout se fait en arrière‑plan, l’utilisateur ne quitte jamais la page, votre intervalle setInterval continue de fonctionner et la conversation peut être rafraîchie instantanément.
+
+En résumé
+new FormData(this) : fabrique un paquet de données à partir du formulaire.
+
+fetch(...) : envoie ce paquet au serveur sans quitter la page, puis reçoit la réponse (ex : "OK").
+
+C’est la base de l’AJAX moderne et la solution à votre problème de page blanche.

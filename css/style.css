@@ -1,0 +1,149 @@
+/* Style global */
+body {
+  background-color: white;
+  /*background-color: rgb(67, 65, 65);*/
+}
+.container-principal {
+  position: relative;
+  width: 70%;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  box-shadow: 0px 0px 15px rgb(107, 91, 91);
+  border-radius: 20px;
+  background-color: #c2bbbb;
+}
+
+/*bouton disconnect*/
+#disconnect {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  fill: rgb(222, 17, 17);
+}
+
+.bienvenue {
+  padding-right: 10rem;
+}
+
+textarea {
+  background-image: url("../img/ddd.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  font-size: 20px;
+  width: 99%;
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../img/ddd.png");
+  border: solid 1px black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  font-size: 20px;
+  height: 40rem;
+  width: 30rem;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+  min-height: 0;
+}
+
+.message-me {
+  align-self: self-start;
+  border-radius: 10px;
+  text-align: left;
+  background: #687e56;
+  margin: 5px;
+  color: white;
+  max-width: 70%;
+  width: fit-content;
+  padding: 0.5rem;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+.message-him {
+  align-self: self-end;
+  border-radius: 10px;
+  text-align: right;
+  background: #284612;
+  color: white;
+  max-width: 70%;
+  width: fit-content;
+  margin: 5px;
+  padding: 0.5rem;
+  word-break: break-all;
+}
+.hour-minute {
+  color: rgb(180, 176, 176);
+  font-size: 0.8rem;
+}
+button svg {
+  width: 30px;
+  height: 30px;
+  fill: rgb(201, 208, 200);
+}
+#envoyer {
+  background: #3f6325;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+li {
+  margin-bottom: 3rem;
+  position: relative;
+  border-radius: 20px;
+  width: 50%;
+  padding-left: 10px;
+  list-style: none;
+}
+
+.date-in-last-msg {
+  margin-left: 2rem;
+  font-size: 0.8rem;
+  color: rgb(180, 176, 176);
+}
+.nb-non-lus {
+  position: absolute;
+  top: -22px;
+  left: 50px;
+}
+.btn-archiver {
+  position: absolute;
+  font-size: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgb(153, 177, 163);
+  border: #284612 solid 1px;
+}
+
+.btn-archiver:hover {
+  background-color: #284612;
+  color: white;
+}
+.last-msg {
+  margin-bottom: 0.5rem;
+}
+.liste-conv-nom:hover {
+  color: #182e07;
+}

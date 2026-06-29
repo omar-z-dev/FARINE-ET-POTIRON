@@ -1,0 +1,54 @@
+
+
+
+utilisateurs             1
+
+id
+pseudo
+email
+mdp
+date_creation
+
+-----------------
+recettes                 2
+
+id
+utilisateurs_id
+titre
+description
+duree
+difficulte
+date_maj
+
+
+-------------
+ingredients             3
+
+id
+nom
+type (farine / autre)
+
+
+-------------------------------
+recette_ingredients     4
+
+recette_id
+ingredient_id
+quantite
+
+---------------------------
+commentaires             5
+
+id
+recette_id
+utilisateur_id
+commentaire
+date_maj
+
+--------------------------
+notes                    6
+
+id
+recette_id
+utilisateurs_id
+type like / dislike/
