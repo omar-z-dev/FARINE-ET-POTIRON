@@ -68,3 +68,35 @@ Router (URL propres)
 Controller base class
 Model base class
 Dependency injection
+
+
+
+Service = “cerveau”
+class RecetteService {
+
+    public function getDashboardData($userId)
+    {
+        $recette = new Recette();
+        $note = new Note();
+
+        return [
+            "recettes" => $recette->mesRecettes($userId),
+            "likes" => $note->getUserLikes($userId)
+        ];
+    }
+}
+
+
+$controller = new DashboardController();
+$controller->index();
+
+👉 PHP fait :
+
+crée le controller
+exécute index()
+index() charge la VIEW (HTML)
+
+require "../controllers/DashboardController.php";
+
+$controller = new DashboardController();
+$controller->index();
