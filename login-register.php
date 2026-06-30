@@ -14,17 +14,12 @@ switch ($action){
         //instancier un utilisateur
         $user = new utilisateur();
         //assigner les parametre de l'utilisateur
-        $email    = $_POST["email"] ?? "";
-        $password = $_POST["password"] ?? "";
+        $identifiant = $_POST["identifiant"] ?? "";
+        $password    = $_POST["password"]    ?? "";
 
-        $user->set("email", $email);
-        $user->set("mdp", $password);
 
         //verifier si l'utilisateur existe ds la BDD
-        $verifuser = $user->login(
-            $user->value("email"),
-            $user->value("mdp")
-        );
+        $verifuser = $user->login($identifiant, $password);
 
         if ($verifuser){
             
@@ -33,7 +28,7 @@ switch ($action){
             connection($user);
 
             //rediriger vers dashboard
-            header("Location: dashbord.php"); 
+            header("Location: dashboard.php"); 
             exit;
         }
             //message d'erreur a afficher sur la page d'accueil
@@ -47,8 +42,8 @@ switch ($action){
 
         $user = new utilisateur();
 
-        $pseudo   = trim($_POST["pseudo"] ?? "");
-        $email    = trim($_POST["email"] ?? "");
+        $pseudo   = trim($_POST["pseudo"]   ?? "");
+        $email    = trim($_POST["email"]    ?? "");
         $password = trim($_POST["password"] ?? "");
 
         // verifier si tous les champs sont remplis
@@ -88,9 +83,10 @@ switch ($action){
         }
 
         //assigner les parametre de l'utilisateur
-        $user->set("nom", $pseudo);
+        $user->set("pseudo", $pseudo);
         $user->set("email", $email);
         $user->set("mdp", $password);
+        $user->set("date_creation", date("Y-m-d H:i:s"));
 
         $userRegister = $user->register();
 

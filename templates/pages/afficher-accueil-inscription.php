@@ -24,17 +24,18 @@
             <!-- creer compte -->
             <h2>Connexion / Inscription</h2>
 
+            <!--------------- user et mdp test ----------------------->
+            <h3 style = "color: yellowgreen;">mot de passe test et email test</h3>
+            <h3>EMAIL omar : r@gmail.com  MDP : 1234</h6>
+            <h3>EMAIL doe : gr@gmail.com  MDP : 123</h6>
+            <h3>EMAIL alex : grr@gmail.com  MDP : 12</h6>
+            <h3>EMAIL jack : rty@gmail.com  MDP : 1</h6>
+
             <!-- message d'erreur email ou mdp incorrect  -->
             <?php if (!empty($_SESSION["error_login"])): ?>
                 <p style="color:red; font-weight:bold;"><?= $_SESSION["error_login"] ?></p>
                 <?php unset($_SESSION["error_login"]); ?>
             <?php endif; ?>
-
-            <h3 style = "color: yellowgreen;">mot de passe test et email test</h3>
-            <h6>EMAIL omar : r@gmail.com  MDP : 1234</h6>
-            <h6>EMAIL doe : gr@gmail.com  MDP : 123</h6>
-            <h6>EMAIL alex : grr@gmail.com  MDP : 12</h6>
-            <h6>EMAIL jack : rty@gmail.com  MDP : 1</h6>
 
             <!-- login : connexion -->
             <form method="POST" action="login-register.php?action=login">

@@ -12,23 +12,27 @@ class utilisateur extends _model {
     protected $fields = [
     "email" ,
     "mdp", 
-    "nom"
+    "pseudo",
+    "date_creation"
     ];
     protected $links  = [];
 
 /*=====================================================
       1.     authentifier un utilisateur
 =======================================================*/
-    function login($email, $password) {
+    function login($identifiant, $password) {
         // Rôle de la méthode: authentifier un utilisateur (verifier si l utilisateur existe ds la BDD)
         // Paramètres : $email, $password
         // Retour : true ou false  
 
         // Création de la requête
-        $sql = "SELECT * FROM `$this->table` where `email` = :email";
+        $sql = "SELECT * FROM `$this->table` 
+                where ( `email` = :identifiant OR  `pseudo` = :identifiant ) ";
+                
         // Valoriser l'identifiant, ds ce cas l'email
+
         $param = [
-            ":email" => $email,
+            ":identifiant" => $identifiant,
         ]; 
 
         global $bdd;

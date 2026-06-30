@@ -10,6 +10,63 @@
     <body>
         <div class ="container-principal">    
             <div>
+                <!-- liste de mes recettes -->
+                <h2> liste de mes recettes </h2>
+
+                <table border="1" cellpadding="8">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Durée</th>
+                            <th>Difficulté</th>
+                            <th>Date de mise à jour</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <?php if (empty($mesRecettes)): ?>
+
+                            <tr>
+                                <td colspan="5">
+                                    Vous n'avez encore créé aucune recette.
+                                </td>
+                            </tr>
+
+                        <?php else: ?>
+
+                            <?php foreach ($mesRecettes as $recette): ?>
+
+                                <tr>
+                                    <td><?= $recette->html("titre") ?></td>
+
+                                    <td><?= $recette->html("duree") ?> min</td>
+
+                                    <td><?= $recette->html("difficulte") ?></td>
+
+                                    <td><?= $recette->html("date_maj") ?></td>
+
+                                    <td>
+                                        <a href="voir-recette.php?id=<?= $recette->id() ?>">
+                                            Voir
+                                        </a>
+
+                                        |
+
+                                        <a href="modifier-recette.php?id=<?= $recette->id() ?>">
+                                            Modifier
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
+
+                    </tbody>
+                </table>
+
                 <!-- rechercher recette formulaire -->
                 <div>
                     <h2>🔍 Rechercher une recette</h2>
@@ -53,29 +110,7 @@
                 </div>
                 
                 <div class="bienvenue">
-                    <h2>Bienvenue sur votre dashboard <?= $user->html("nom") ?> 👋</h2>
-                    
-                    <!---------liste des recettes----------------->
-
-                    <h3> liste des recettes: </h3>
-
-                    <select id="nom">
-                        <option value="">-- Sélectionnez --</option>
-                        
-                        <?php foreach($allUsers as $userSelected): ?>
-                        <!-- ne pas afficher l'utilisateur connecté -->
-                            <?php if($userSelected->id() == $_SESSION["id"]) continue; ?>
-
-                            <option value="<?= $userSelected->html("nom") ?>">
-                                <?= $userSelected->html("nom") ?>
-                            </option>
-
-                        <?php endforeach; ?>
-
-                    </select>
-
-                    <button onclick="ouvrirConversation()">Ecrire le message </button><br><br>
-                
+                    <h2>Bienvenue sur votre dashboard <?= $user->html("nom") ?> 👋</h2>                
                 </div>               
                 
 
