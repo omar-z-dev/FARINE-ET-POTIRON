@@ -18,9 +18,13 @@ function afficherFormAjout() {
 ===========================================================*/
 
 function validerRecette() {
-  const form = document.getElementById("form-recette");
-  const data = new FormData(form);
+  // recup le formulaire avec son ID
+  const formulaire = document.getElementById("form-recette");
 
+  //crée un objet FormData contenant tous les champs du formulaire.
+  const data = new FormData(formulaire);
+
+  //navigateur envoie ces données en POST
   fetch("valider-creation-recette-ajax.php", {
     method: "POST",
     body: data,
@@ -31,6 +35,11 @@ function validerRecette() {
         document.getElementById("zone-ajout-recette").innerHTML =
           "<p style='color:green'>✅ Recette ajoutée avec succès.</p>";
 
+        // supprimer le message de succes apres 3 secondes
+        setTimeout(() => {
+          document.getElementById("zone-ajout-recette").innerHTML = "";
+        }, 3000);
+
         // Recharger la liste des recettes
         fetch("liste-recettes-ajax.php")
           .then((response) => response.text())
@@ -40,6 +49,10 @@ function validerRecette() {
           });
       } else {
         document.getElementById("msg-ajout-recette").innerHTML = message;
+        // supprimer le message d echec apres 3 secondes
+        setTimeout(() => {
+          document.getElementById("msg-ajout-recette").innerHTML = "";
+        }, 3000);
       }
     });
 }

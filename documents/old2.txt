@@ -52,3 +52,19 @@ id
 recette_id
 utilisateurs_id
 type like / dislike/
+
+
+
+
+
+niveau 2 (très pro)
+Router (URL propres)
+/recettes/add
+/recettes/list
+/recettes/delete
+
+
+ niveau 3 (framework maison)
+Controller base class
+Model base class
+Dependency injection
