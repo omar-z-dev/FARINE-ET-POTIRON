@@ -30,6 +30,14 @@ function validerRecette() {
       if (message === "SUCCESS") {
         document.getElementById("zone-ajout-recette").innerHTML =
           "<p style='color:green'>✅ Recette ajoutée avec succès.</p>";
+
+        // Recharger la liste des recettes
+        fetch("liste-recettes-ajax.php")
+          .then((response) => response.text())
+          .then((html) => {
+            console.log(html);
+            document.getElementById("liste-recettes").innerHTML = html;
+          });
       } else {
         document.getElementById("msg-ajout-recette").innerHTML = message;
       }
