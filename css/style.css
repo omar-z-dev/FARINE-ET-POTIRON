@@ -5,13 +5,13 @@ body {
 }
 .container-principal {
   position: relative;
-  width: 70%;
+  width: 90%;
   margin: auto;
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: flex;
-  flex-direction: row;
-  gap: 10rem;
+  flex-direction: column;
+  gap: 1rem;
   padding: 2rem;
   font-family: Arial, sans-serif;
   box-shadow: 0px 0px 15px rgb(107, 91, 91);
@@ -34,16 +34,6 @@ body {
 
 .bienvenue {
   padding-right: 10rem;
-}
-
-textarea {
-  background-image: url("../img/ddd.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  font-size: 20px;
-  width: 99%;
 }
 
 .conversation {

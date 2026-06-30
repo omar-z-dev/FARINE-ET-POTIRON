@@ -14,15 +14,24 @@ $bdd = new PDO("mysql:host=172.18.0.1;dbname=fep-omar;charset=UTF8", "fep-omar",
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING) ;  // En mise au point seulement
 
 
-// Inclure les classes et les fonctions
-require_once __DIR__ . "/../modele/utilisateur.php";
+/* ---------------- AUTLOAD MODELES ---------------- */
+
+//!Si tu rencontres une classe inconnue, appelle la fonction loadModel($name)” : en faisant $user = new utilisateur(); PHP cherche la classe utilisateur Il ne la trouve pas encore .Donc il appelle automatiquement :loadModel("utilisateur");
+
+function loadModel($name) {
+    $file = __DIR__ . "/../modele/$name.php";
+
+    if (file_exists($file)) {
+        require_once $file;
+    }
+}
+
+spl_autoload_register("loadModel");
+
+/* ---------------- SESSION ---------------- */
+
 require_once __DIR__ . "/../lib/session.php";
 
-require_once __DIR__ . "/../modele/note.php";
-require_once __DIR__ . "/../modele/commentaire.php";
-require_once __DIR__ . "/../modele/recette.php";
-require_once __DIR__ . "/../modele/ingredient.php";
-require_once __DIR__ . "/../modele/recette_ingredient.php";
 
 
 // Initialisation de la session en chargeant la fonction (presente ds session.php) qui inclut session_start

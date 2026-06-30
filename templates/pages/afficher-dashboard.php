@@ -8,7 +8,11 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-        <div class ="container-principal">    
+          
+        <div class ="container-principal">  
+        
+            <h2>Bienvenue sur votre dashboard <?= $user->html("pseudo") ?> 👋</h2>                
+              
             <div>
                 <!-- liste de mes recettes -->
                 <h2> liste de mes recettes </h2>
@@ -17,6 +21,7 @@
                     <thead>
                         <tr>
                             <th>Titre</th>
+                            <th>Description</th>
                             <th>Durée</th>
                             <th>Difficulté</th>
                             <th>Date de mise à jour</th>
@@ -41,6 +46,8 @@
                                 <tr>
                                     <td><?= $recette->html("titre") ?></td>
 
+                                    <td><?= $recette->html("description") ?></td>
+
                                     <td><?= $recette->html("duree") ?> min</td>
 
                                     <td><?= $recette->html("difficulte") ?></td>
@@ -49,13 +56,13 @@
 
                                     <td>
                                         <a href="voir-recette.php?id=<?= $recette->id() ?>">
-                                            Voir
+                                        Voir
                                         </a>
 
                                         |
 
                                         <a href="modifier-recette.php?id=<?= $recette->id() ?>">
-                                            Modifier
+                                        Modifier
                                         </a>
                                     </td>
                                 </tr>
@@ -64,8 +71,20 @@
 
                         <?php endif; ?>
 
+                         <!-- bouton ajouter une recette : -->
+                                <tr>
+                                    <td colspan="7" style="text-align:center;">
+                                        <button type="button" onclick="afficherFormAjout()">
+                                            Ajouter une recette ➕
+                                        </button>
+                                    </td>
+                                </tr>
                     </tbody>
                 </table>
+
+
+                <!-- formulaire ajouter une recette -->
+                <div id="zone-ajout-recette"></div>
 
                 <!-- rechercher recette formulaire -->
                 <div>
@@ -108,12 +127,6 @@
 
                     </form>
                 </div>
-                
-                <div class="bienvenue">
-                    <h2>Bienvenue sur votre dashboard <?= $user->html("nom") ?> 👋</h2>                
-                </div>               
-                
-
 
                 <!--bouton de deconnexion : -->
                 <div>

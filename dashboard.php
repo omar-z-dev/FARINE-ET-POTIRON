@@ -14,7 +14,7 @@ $user = userConnected();
 $recette = new recette();
 
 //recuperer mes recettes
-$mesRecettes = $recette->mes_recettes($user->id());
+$mesRecettes = $recette->mesRecettes($user->id());
 
 
 // Afficher le template  
