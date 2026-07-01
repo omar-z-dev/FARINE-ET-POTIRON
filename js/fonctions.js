@@ -115,5 +115,5 @@ function validerModificationRecette() {
 
 function fermerProfil() {
   console.log("fermerProfil");
-  document.getElementsByClassName("container-modif-recette").innerHTML = "";
+  document.getElementById("modifier-recette").innerHTML = "";
 }
