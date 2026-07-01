@@ -38,7 +38,7 @@
             <?php endif; ?>
 
             <!-- login : connexion -->
-            <form method="POST" action="login-register.php?action=login">
+            <form method="POST" action="index.php?page=login-register&action=login">
                 <h3>Connexion</h3>
                 <input type="text" name="identifiant" placeholder="Email ou pseudo"><br><br>
                 <input type="password" name="password" placeholder="Mot de passe"><br><br>

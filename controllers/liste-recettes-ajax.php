@@ -1,6 +1,4 @@
 <?php
- //initialisation
- require_once "lib/init.php";
 
 
 //recuperer l'utilisateur connecté

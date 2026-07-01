@@ -1,7 +1,5 @@
 <?php
 
-require_once "lib/init.php";
-
 // Récupération des paramètres pour differencier entre login ou register
 $action = $_GET["action"] ?? "";
 
@@ -28,12 +26,12 @@ switch ($action){
             connection($user);
 
             //rediriger vers dashboard
-            header("Location: dashboard.php"); 
+            header("Location:index.php?page=dashboard"); 
             exit;
         }
             //message d'erreur a afficher sur la page d'accueil
             $_SESSION["error_login"] = "😱 Email ou mot de passe incorrect";
-            require "accueil.php";
+            require "index.php";
             break;
 
     // cas creation du compte

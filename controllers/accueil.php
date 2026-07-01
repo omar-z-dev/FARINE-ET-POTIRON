@@ -1,7 +1,5 @@
 <?php
 // ---------------------------
-// Initialisations diverses
-require_once "lib/init.php";
 
 
 //ttes les recettes 

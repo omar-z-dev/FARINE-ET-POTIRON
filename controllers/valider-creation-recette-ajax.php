@@ -1,6 +1,5 @@
 <?php
 
-require_once "lib/init.php";
 
 $utilisateur_id = $_SESSION["id"];
 $titre          = $_POST["titre"];

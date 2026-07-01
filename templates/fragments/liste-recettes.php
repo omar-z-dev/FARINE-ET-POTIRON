@@ -41,15 +41,15 @@
                         <td><?= $recette->html("date_maj") ?></td>
 
                         <td>
-                            <a href="voir-recette.php?id=<?= $recette->id() ?>">
+                            <button type="button" onclick="VoirRecette(<?= $recette->id() ?>)">
                             Voir
-                            </a>
+                            </button>
 
                             |
 
-                            <a href="modifier-recette.php?id=<?= $recette->id() ?>">
+                            <button type="button" onclick="AfficherFormModifierRecette(<?= $recette->id() ?>)">
                             Modifier
-                            </a>
+                            </button>
                         </td>
                     </tr>
 
