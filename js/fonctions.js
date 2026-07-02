@@ -139,7 +139,7 @@ function chargerCatalogueFarines() {
       for (const reference in data) {
         const option = document.createElement("option");
 
-        option.value = reference;
+        option.value = data[reference];
         option.textContent = data[reference];
 
         select.appendChild(option);
