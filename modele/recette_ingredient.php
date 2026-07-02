@@ -10,7 +10,8 @@ class recette_ingredient extends _model {
     protected $fields = [  
     "ingredient_id", 
     "recette_id",
-    "quantite"
+    "quantite",
+    "unite"
     ];
     
     protected $links = [ 

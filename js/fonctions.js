@@ -10,6 +10,7 @@ function afficherFormAjout() {
     .then((response) => response.text())
     .then((html) => {
       document.getElementById("zone-ajout-recette").innerHTML = html;
+      chargerCatalogueFarines();
     });
 }
 
@@ -110,10 +111,126 @@ function validerModificationRecette() {
     });
 }
 /*==========================================================  
-        // fermer modif profil
+        // fermer
 ===========================================================*/
 
-function fermerProfil() {
-  console.log("fermerProfil");
+function fermerModifRecette() {
+  console.log("fermermodif");
   document.getElementById("modifier-recette").innerHTML = "";
+}
+/*==========================================================  
+        // fermer
+===========================================================*/
+
+function fermerAjoutRecette() {
+  console.log("fermerajout");
+  document.getElementById("zone-ajout-recette").innerHTML = "";
+}
+
+/*==========================================================  
+         role : afficher les farine dispo depuis api
+===========================================================*/
+function chargerCatalogueFarines() {
+  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+    .then((response) => response.json())
+    .then((data) => {
+      const select = document.querySelector('select[name="farines[]"]');
+
+      for (const reference in data) {
+        const option = document.createElement("option");
+
+        option.value = reference;
+        option.textContent = data[reference];
+
+        select.appendChild(option);
+      }
+    });
+}
+
+/*==========================================================  
+         role : ajouter ligne farine
+===========================================================*/
+function ajouterFarine() {
+  //récupère le conteneur principal
+  const container = document.getElementById("liste-farines");
+
+  // crée une nouvelle ligne
+  const ligne = document.createElement("div");
+  ligne.classList.add("ligne-farine");
+
+  //construit le HTML de la ligne
+  ligne.innerHTML = `
+        <select name="farines[]">
+            <option value="">-- Choisir une farine --</option>
+        </select>
+
+        <input type="number" name="quantite_farines[]" placeholder="Quantité">
+
+        <select name="unite_farines[]">
+            <option value="g">g</option>
+            <option value="kg">kg</option>
+        </select>
+        <button type="button" onclick="supprimerLigne(this)">
+            ✖
+        </button>
+    `;
+
+  //ajoute la ligne dans la page
+  container.appendChild(ligne);
+
+  //recharge les farines API dans le nouveau select
+  chargerCatalogueFarinesLigneSup(
+    ligne.querySelector('select[name="farines[]"]'),
+  );
+}
+/*==========================================================  
+         role : charger catalogue farines
+===========================================================*/
+function chargerCatalogueFarinesLigneSup(select) {
+  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+    .then((response) => response.json())
+    .then((data) => {
+      for (const reference in data) {
+        const option = document.createElement("option");
+
+        option.value = reference;
+        option.textContent = data[reference];
+
+        select.appendChild(option);
+      }
+    });
+}
+
+/*==========================================================  
+         role : ajouter ligne ingredient
+===========================================================*/
+function ajouterIngredient() {
+  //récupère le conteneur principal
+  const container = document.getElementById("liste-ingredients");
+
+  // crée une nouvelle ligne
+  const ligne = document.createElement("div");
+  ligne.classList.add("ligne-ingredient");
+
+  //construit le HTML de la ligne
+  ligne.innerHTML = `
+        <input type="text" name="ingredients[]"
+            placeholder="Nom de l'ingrédient">
+
+        <input type="number" name="quantite_ingredients[]"
+            placeholder="Quantité">
+
+        <input type="text" name="unite_ingredients[]"
+            placeholder="g, ml...">
+        <button id = "btn-supprimer-ligne" type="button" onclick="supprimerLigne(this)">
+            ✖
+        </button>
+    `;
+
+  //ajoute la ligne dans la page
+  container.appendChild(ligne);
+}
+/* supprimer une ligne */
+function supprimerLigne(bouton) {
+  bouton.parentElement.remove();
 }

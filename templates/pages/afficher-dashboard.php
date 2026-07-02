@@ -79,7 +79,7 @@
         </div> 
 
 
-        <script src="js/fonctions.js"></script>
+        <script src="js/fonctions.js" ></script>
 
 
     </body>

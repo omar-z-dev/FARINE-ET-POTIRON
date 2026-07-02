@@ -1,5 +1,8 @@
 
 <div class ="container-ajout-recette">
+    <span id="fermer-profil" onclick="fermerAjoutRecette()">
+        ✖
+    </span>
     <h2>Ajouter une recette</h2>
 
     <!-- formulaire d ajout d une recette -->

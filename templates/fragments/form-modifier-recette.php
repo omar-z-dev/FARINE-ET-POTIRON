@@ -2,7 +2,7 @@
 <!-- Formulaire de modification d'une recette -->
 
 <div class="container-modif-recette">
-    <span id="fermer-profil" onclick="fermerProfil()">
+    <span id="fermer-profil" onclick="fermerModifRecette()">
         ✖
     </span>
 

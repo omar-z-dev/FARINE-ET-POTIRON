@@ -9,6 +9,7 @@ switch ($page) {
         require "controllers/dashboard.php";
         break;
 
+    //cas de l'affichage du formulaire de connexion et d'inscription    
     case "login-register":
         require "controllers/login-register.php";
         break;
@@ -18,8 +19,9 @@ switch ($page) {
         break;
 
     case "creer-recette-ajax":
-        require "templates/fragments/creer-recette.php";
+        require "templates/fragments/creer-recette2.php";
         break;
+        
 
     // cas de validation de la creation d'une recette
     case "valider-creation-recette-ajax":

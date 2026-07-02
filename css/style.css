@@ -32,72 +32,6 @@ body {
   fill: rgb(222, 17, 17);
 }
 
-.bienvenue {
-  padding-right: 10rem;
-}
-
-.conversation {
-  display: flex;
-  flex-direction: column;
-  background-image: url("../img/ddd.png");
-  border: solid 1px black;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 5px;
-  font-size: 20px;
-  height: 40rem;
-  width: 30rem;
-  overflow-y: auto;
-  margin-bottom: 1rem;
-  min-height: 0;
-}
-
-.message-me {
-  align-self: self-start;
-  border-radius: 10px;
-  text-align: left;
-  background: #687e56;
-  margin: 5px;
-  color: white;
-  max-width: 70%;
-  width: fit-content;
-  padding: 0.5rem;
-  word-break: break-all;
-  overflow-wrap: break-word;
-}
-.message-him {
-  align-self: self-end;
-  border-radius: 10px;
-  text-align: right;
-  background: #284612;
-  color: white;
-  max-width: 70%;
-  width: fit-content;
-  margin: 5px;
-  padding: 0.5rem;
-  word-break: break-all;
-}
-.hour-minute {
-  color: rgb(180, 176, 176);
-  font-size: 0.8rem;
-}
-button svg {
-  width: 30px;
-  height: 30px;
-  fill: rgb(201, 208, 200);
-}
-#envoyer {
-  background: #3f6325;
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 li {
   margin-bottom: 3rem;
   position: relative;
@@ -139,26 +73,26 @@ li {
 }
 
 .container-ajout-recette {
-  border: solid 1px black;
-  width: 30%;
+  position: relative;
+  width: 40%;
   padding: 0.5rem;
   border-radius: 10px;
   margin-top: 1rem;
+  box-shadow: 0px 0px 15px rgb(107, 91, 91);
 }
 .container-modif-recette {
-  border: solid 1px black;
   position: relative;
-  width: 30%;
+  width: 40%;
   padding: 0.5rem;
   border-radius: 10px;
   margin-top: 1rem;
+  box-shadow: 0px 0px 15px rgb(107, 91, 91);
 }
 
 #fermer-profil {
   position: absolute;
-  top: -28px;
-  right: -28px;
-
+  top: 10px;
+  right: 10px;
   width: 32px;
   height: 32px;
   border: 1px solid black;
@@ -176,4 +110,29 @@ li {
 #fermer-profil:hover {
   color: red;
   border-color: red;
+}
+
+#modifier-recette {
+  margin-bottom: 2rem;
+}
+
+.container-ajout-recette button {
+  margin-top: 0.5rem;
+  padding: 3px 4px;
+  border: none;
+  border-radius: 2px;
+  background: #16914b;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.container-ajout-recette button:hover {
+  background: #11733c;
+}
+
+.container-ajout-recette .btn-supprimer-ligne {
+  border-radius: 50%;
 }
