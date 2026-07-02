@@ -1,6 +1,6 @@
 <?php
 
-// recup er les données du formulaire
+// recuperer les données du formulaire
 $utilisateur_id = $_SESSION["id"];
  //recette base
 $titre       = $_POST["titre"];
@@ -56,15 +56,34 @@ $recette->insert();
 
 
 //ajouter les farines
-for ($i = 0; $i < count($farines); $i++) {
+foreach ($farines as $i => $nom) {
 
-    $farine = new ingredient();
+    $quantite = $quantiteFarines[$i];
+    $unite    = $uniteFarines[$i];
+
     
-    $farine->set("recette_id", $recette->id());
-    $farine->set("nom", $farines[$i]);
-    $farine->set("quantite", $quantiteFarines[$i]);
-    $farine->set("unite", $uniteFarines[$i]);
-    $farine->insert();
+    $farine = new ingredient();
+    $exist = $farine->findBy("nom", $nom);
+    // verifier si la farine existe deja ds la bdd ingredient
+    if (!$exist) {
+        $farine->set("nom", $nom);
+        $farine->set("type", "farine");
+        $farine->set("created_at", date("Y-m-d H:i:s"));
+    
+        $farine->insert();
+    }
+
+    $farineId = $farine->id();
+
+
+    //ajouter ds la bdd ingredient_recette
+    $recetteFarine = new recette_ingredient();
+    $recetteFarine->set("recette_id", $recette->id());
+    $recetteFarine->set("ingredient_id", $farineId);
+    $recetteFarine->set("quantite", $quantite);
+    $recetteFarine->set("unite", $unite);
+
+    $recetteFarine->insert();
 }
 
 
@@ -75,13 +94,14 @@ foreach ($ingredients as $i => $nom) {
     $quantite = $quantiteIngredients[$i];
     $unite    = $uniteIngredients[$i];
 
-    // récupérer ou créer ingredient
+    // verifier si l'ingredient existe deja ds la bdd ingredient
     $ingredient = new ingredient();
     $exist = $ingredient->findBy("nom", $nom);
 
     if (!$exist) {
         $ingredient->set("nom", $nom);
         $ingredient->set("type", "autre");
+        $ingredient->set("created_at", date("Y-m-d H:i:s"));
     
         $ingredient->insert();
     }
@@ -97,10 +117,6 @@ foreach ($ingredients as $i => $nom) {
 
     $recetteIng->insert();
 }
-
-
-
-
 
 
 echo "SUCCESS";

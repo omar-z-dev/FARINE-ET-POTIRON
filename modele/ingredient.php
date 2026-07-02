@@ -9,7 +9,8 @@ class ingredient extends _model {
     protected $table  = "ingredients";
     protected $fields = [  
     "nom" , 
-    "type"
+    "type",
+    "created_at",
     ];
     protected $links = [ 
     ];
