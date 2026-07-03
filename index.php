@@ -32,9 +32,9 @@ switch ($page) {
         require "controllers/liste-recettes-ajax.php";
         break;
         
-    // cas afficher form modification d'une recette
-    case "modifier-recette-ajax":
-        require "controllers/modifier-recette-ajax.php";
+    // cas afficher form  modification d'une recette
+    case "modifier-recette-ajax2":
+        require "controllers/modifier-recette-ajax2.php";
         break;
 
     

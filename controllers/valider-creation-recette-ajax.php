@@ -22,8 +22,6 @@ $quantiteIngredients = $_POST["quantite_ingredients"];
 $uniteIngredients    = $_POST["unite_ingredients"];
 
 
-var_dump($farines);
-
 // Vérifier qu'aucun champ n'est vide
 /*if (empty($titre)|| 
     empty($description)|| 

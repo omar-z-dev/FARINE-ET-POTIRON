@@ -74,7 +74,6 @@
 
                 <input type="text" name="unite_ingredients[]"
                     placeholder="g, ml...">
-                    
             </div>
         </div>
         <!-- btn ajout d un ingrédient -->

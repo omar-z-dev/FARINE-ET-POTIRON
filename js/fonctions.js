@@ -64,7 +64,7 @@ function validerRecette() {
          role : AfficherFormModifierRecette
 ===========================================================*/
 function AfficherFormModifierRecette(id) {
-  fetch("index.php?page=modifier-recette-ajax&id=" + id)
+  fetch("index.php?page=modifier-recette-ajax2&id=" + id)
     .then((response) => response.text())
     .then((html) => {
       // zone où affiche le formulaire
@@ -193,7 +193,7 @@ function chargerCatalogueFarinesLigneSup(select) {
       for (const reference in data) {
         const option = document.createElement("option");
 
-        option.value = reference;
+        option.value = data[reference];
         option.textContent = data[reference];
 
         select.appendChild(option);
