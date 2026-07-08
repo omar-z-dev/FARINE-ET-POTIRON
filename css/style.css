@@ -97,16 +97,15 @@ li {
   height: 32px;
   border: 1px solid black;
   border-radius: 50%;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   font-size: 18px;
   cursor: pointer;
   color: #666;
   background: white;
 }
+
 #fermer-profil:hover {
   color: red;
   border-color: red;
@@ -116,7 +115,7 @@ li {
   margin-bottom: 2rem;
 }
 
-.container-ajout-recette button {
+.btn {
   margin-top: 0.5rem;
   padding: 3px 4px;
   border: none;
@@ -129,10 +128,6 @@ li {
   transition: background 0.3s;
 }
 
-.container-ajout-recette button:hover {
+.btn:hover {
   background: #11733c;
-}
-
-.container-ajout-recette .btn-supprimer-ligne {
-  border-radius: 50%;
 }

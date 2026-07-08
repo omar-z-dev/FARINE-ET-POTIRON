@@ -64,14 +64,15 @@ function validerRecette() {
          role : AfficherFormModifierRecette
 ===========================================================*/
 function AfficherFormModifierRecette(id) {
+  console.log("afficher modif recette");
+
   fetch("index.php?page=modifier-recette-ajax2&id=" + id)
     .then((response) => response.text())
     .then((html) => {
       // zone où affiche le formulaire
       document.getElementById("modifier-recette").innerHTML = html;
-    })
-    .catch((error) => {
-      console.error("Erreur chargement formulaire modification :", error);
+      // Charger les farines dans les <select> du formulaire
+      chargerCatalogueFarinesModification();
     });
 }
 /*==========================================================  
@@ -115,8 +116,11 @@ function validerModificationRecette() {
 ===========================================================*/
 
 function fermerModifRecette() {
-  console.log("fermermodif");
-  document.getElementById("modifier-recette").innerHTML = "";
+  console.log("fermer form de modif");
+  document.getElementById("fermer-profil").style.background = "grey";
+  setTimeout(() => {
+    document.getElementById("modifier-recette").innerHTML = "";
+  }, 80);
 }
 /*==========================================================  
         // fermer
@@ -124,7 +128,10 @@ function fermerModifRecette() {
 
 function fermerAjoutRecette() {
   console.log("fermerajout");
-  document.getElementById("zone-ajout-recette").innerHTML = "";
+  document.getElementById("fermer-profil").style.background = "grey";
+  setTimeout(() => {
+    document.getElementById("zone-ajout-recette").innerHTML = "";
+  }, 80);
 }
 
 /*==========================================================  
@@ -233,4 +240,32 @@ function ajouterIngredient() {
 /* supprimer une ligne */
 function supprimerLigne(bouton) {
   bouton.parentElement.remove();
+}
+
+/*==========================================================  
+         role : chargerCatalogueFarines pour Modification
+===========================================================*/
+
+function chargerCatalogueFarinesModification() {
+  console.log("charger  Catalogue   Farines   Modification");
+  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+    .then((response) => response.json())
+    .then((data) => {
+      document.querySelectorAll(".select-farine").forEach((select) => {
+        const selected = select.dataset.selected;
+
+        for (const reference in data) {
+          const option = document.createElement("option");
+
+          option.value = data[reference];
+          option.textContent = data[reference];
+
+          if (data[reference] === selected) {
+            option.selected = true;
+          }
+
+          select.appendChild(option);
+        }
+      });
+    });
 }

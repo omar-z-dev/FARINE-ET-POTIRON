@@ -54,7 +54,7 @@
 
         </div>
         <!-- btn ajout d une farine -->
-        <button type="button" onclick="ajouterFarine()">
+        <button class ="btn" type="button" onclick="ajouterFarine()">
             + Ajouter une farine
         </button>
 
@@ -77,13 +77,13 @@
             </div>
         </div>
         <!-- btn ajout d un ingrédient -->
-        <button type="button" onclick="ajouterIngredient()">+ Ajouter un ingrédient
+        <button class ="btn" type="button" onclick="ajouterIngredient()">+ Ajouter un ingrédient
         </button>
 
         <hr>
         <!----- btn valider ----->
-        <button
-            type="button"onclick="validerRecette()">Publier la recette
+        <button class ="btn"
+            type="button" onclick="validerRecette()">Publier la recette
         </button>
 
     </form>

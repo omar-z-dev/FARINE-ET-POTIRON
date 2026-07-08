@@ -57,47 +57,48 @@
 
         <hr>
 
+        <!----------------- liste des farines ---------------->
+
         <h3>Farines</h3>
 
         <div id="liste-farines">
 
             <?php foreach($listeFarines as $farine): ?>
+                <div class="ligne-farine"> 
+                    <select
+                        name="farines[]"
+                        class="select-farine"
+                        data-selected="<?= $farine["nom"] ?>">
 
-            <!-- liste des farines -->
-            <div class="ligne-farine"> 
-                <select
-                    name="farines[]"
-                    class="select-farine"
-                    data-selected="<?= $farine["nom"] ?>">
-                    <option value=""></option>
-                </select>
+                        <option value=""></option>
+                        
+                    </select>
 
-                <input
-                    type="number"
-                    name="quantite_farines[]"
-                    value="<?= $farine["quantite"] ?>">
+                    <input
+                        type="number"
+                        name="quantite_farines[]"
+                        value="<?= $farine["quantite"] ?>">
 
-                <select name="unite_farines[]">
+                    <select name="unite_farines[]">
 
-                    <option  value="g" <?= $farine["unite"]=="g" ? "selected" : "" ?>>g
-                    </option>
+                        <option  value="g" <?= $farine["unite"]=="g" ? "selected" : "" ?>>g
+                        </option>
 
-                    <option value="kg" <?= $farine["unite"]=="kg" ? "selected" : "" ?>>kg
-                    </option>
+                        <option value="kg" <?= $farine["unite"]=="kg" ? "selected" : "" ?>>kg
+                        </option>
 
-                </select>
+                    </select>
 
-                <button type="button"  onclick="supprimerLigne(this)">
-                    ✖
-                </button>
+                    <button type="button"  onclick="supprimerLigne(this)">
+                        ✖
+                    </button>
 
-            </div>
-
+                </div>
             <?php endforeach; ?>
 
         </div>
 
-        <button type="button"  onclick="ajouterFarine()">+ Ajouter une farine
+        <button class ="btn" type="button"  onclick="ajouterFarine()">+ Ajouter une farine
         </button>
 
         <hr>
@@ -105,9 +106,10 @@
         <h3>Autres ingrédients</h3>
 
         <!-- liste des ingrédients -->
+
         <div id="liste-ingredients">
 
-            <?php foreach($listeIngredients as $ingredient): ?>
+            <?php foreach($recetteAllIngredients as $ingredient): ?>
 
             <div class="ligne-ingredient">
 
@@ -130,13 +132,13 @@
 
         </div>
 
-        <button type="button" onclick="ajouterIngredient()">
+        <button class ="btn" type="button" onclick="ajouterIngredient()">
             + Ajouter un ingrédient
         </button>
 
         <hr>
 
-        <button type="button" onclick="validerModificationRecette()">
+        <button class ="btn" type="button" onclick="validerModificationRecette()">
             ✔ Valider les modifications
         </button>
 

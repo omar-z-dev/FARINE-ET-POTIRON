@@ -81,6 +81,7 @@ foreach ($farines as $i => $nom) {
     $recetteFarine->set("recette_id", $recette->id());
     $recetteFarine->set("ingredient_id", $farineId);
     $recetteFarine->set("quantite", $quantite);
+    $recetteFarine->set("nom_ingredient", $nom);
     $recetteFarine->set("unite", $unite);
 
     $recetteFarine->insert();
@@ -113,6 +114,7 @@ foreach ($ingredients as $i => $nom) {
     $recetteIng->set("recette_id", $recette->id());
     $recetteIng->set("ingredient_id", $ingredientId);
     $recetteIng->set("quantite", $quantite);
+    $recetteIng->set("nom_ingredient", $nom);
     $recetteIng->set("unite", $unite);
 
     $recetteIng->insert();
