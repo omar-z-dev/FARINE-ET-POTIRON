@@ -137,7 +137,7 @@
 
         <hr>
 
-        <button class ="btn btn-valider" type="button" onclick="validerModificationRecette(<?= $recette->id() ?>)">
+        <button class ="btn btn-valider" type="button" onclick="validerModificationRecette()">
             ✔ Valider les modifications
         </button>
 

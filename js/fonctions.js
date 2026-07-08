@@ -78,11 +78,11 @@ function AfficherFormModifierRecette(id) {
 /*==========================================================  
          role : validerModificationRecette
 ===========================================================*/
-function validerModificationRecette(id) {
+function validerModificationRecette() {
   const form = document.getElementById("form-modif-recette");
   const data = new FormData(form);
 
-  fetch("index.php?page=valider-modif-recette-ajax&id=" + id, {
+  fetch("index.php?page=valider-modif-recette-ajax", {
     method: "POST",
     body: data,
   })
