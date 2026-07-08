@@ -3,9 +3,9 @@
 //recuperer l id de la recette
 $id = $_GET["id"];
 
-echo "<pre>"; echo "id de la recette : ";
+/*echo "<pre>"; echo "id de la recette : ";
 print_r($id);
-echo "</pre>";
+echo "</pre>";*/
 
 //instancier un objet recette pour récupérer les informations de la recette
 $recette = new recette();
@@ -23,13 +23,13 @@ $recetteAllFarines = new recette_ingredient();
 $listeFarines = $recetteAllFarines->getFarinesByRecette($id);
 
 
-echo "<pre>"; echo "///----liste des ingrédients de la recette : ";
+/*echo "<pre>"; echo "///----liste des ingrédients de la recette : ";
 print_r($recetteAllIngredients);
 echo "</pre>";
 
 echo "<pre>"; echo "++++++---liste des farines de la recette : ";
 print_r($listeFarines);
-echo "</pre>";
+echo "</pre>";*/
 
 require "templates/fragments/form-modifier-recette2.php";
 

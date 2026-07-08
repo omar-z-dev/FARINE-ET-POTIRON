@@ -131,3 +131,6 @@ li {
 .btn:hover {
   background: #11733c;
 }
+.btn-valider {
+  border: solid 2px #021008;
+}

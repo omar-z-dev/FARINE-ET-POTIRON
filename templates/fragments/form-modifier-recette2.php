@@ -132,13 +132,12 @@
 
         </div>
 
-        <button class ="btn" type="button" onclick="ajouterIngredient()">
-            + Ajouter un ingrédient
+        <button class ="btn" type="button" onclick="ajouterIngredient()">+ Ajouter un ingrédient
         </button>
 
         <hr>
 
-        <button class ="btn" type="button" onclick="validerModificationRecette()">
+        <button class ="btn btn-valider" type="button" onclick="validerModificationRecette(<?= $recette->id() ?>)">
             ✔ Valider les modifications
         </button>
 
