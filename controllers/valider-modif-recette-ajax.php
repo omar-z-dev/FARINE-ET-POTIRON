@@ -12,9 +12,9 @@ $difficulte  = $_POST["difficulte"];
 $date_maj    = date("Y-m-d H:i:s");
 
 
-echo "<pre>"; echo "///----post : ";
+/*echo "<pre>"; echo "///----post : ";
 print_r($_POST);
-echo "</pre>";
+echo "</pre>";*/
 
 
 //farines
@@ -46,22 +46,47 @@ $recette->set("duree"         , $duree);
 $recette->set("difficulte"    , $difficulte);
 $recette->set("date_maj"      , $date_maj);
 
-//ajouter la recette
+//*********ajouter la recette
 $recette->update();
 
 //envoyer un message de confirmation ( sera recup en java pour affichage du messge succes insertion et suppression du formulaire d'ajout de recette)
 
 
-//ajouter les farines
+//recuperer id des recettes_ingredients
+$idsRecetteIngredient = $_POST["id_recette_ingredient"];
+
+//recuperer id des ingredients
+$idIng = $_POST["id_ingredient"];
+
+/*echo "<pre>"; echo "///----idsRecetteIngredient : ";
+print_r($idsRecetteIngredient);
+echo "</pre>";
+
+echo "<pre>"; echo "///----idIng : ";
+print_r($idIng);
+echo "</pre>";*/
+
+//********ajouter les farines
 foreach ($farines as $i => $nom) {
 
-    $quantite = $quantiteFarines[$i];
-    $unite    = $uniteFarines[$i];
+    $idRecetteIngredient = $idsRecetteIngredient[$i];
+    $idIng               = $idIng[$i];
+    $quantite            = $quantiteFarines[$i];
+    $unite               = $uniteFarines[$i];
 
     
     $farine = new ingredient();
-    $exist = $farine->findBy("nom", $nom);
+    
+    //charger l'ingrédient à modifier
+    $farine->load($idIng);
+
+    /*echo "<pre>"; echo "///----farine : ";
+    print_r($farine);
+    echo "</pre>";*/
+
     // verifier si la farine existe deja ds la bdd ingredient
+    $exist = $farine->findBy("nom", $nom);
+    
     if (!$exist) {
         $farine->set("nom", $nom);
         $farine->set("type", "farine");
@@ -75,6 +100,9 @@ foreach ($farines as $i => $nom) {
 
     //ajouter ds la bdd ingredient_recette
     $recetteFarine = new recette_ingredient();
+
+    $recetteFarine->load($idRecetteIngredient);
+
     $recetteFarine->set("recette_id"     , $recette->id());
     $recetteFarine->set("ingredient_id"  , $farineId);
     $recetteFarine->set("quantite"       , $quantite);
@@ -86,28 +114,60 @@ foreach ($farines as $i => $nom) {
 
 
 
-//ajouter ds la bdd les ingredients 
+//********ajouter ds la bdd les ingredients 
+
+$Iding2= $_POST["id_ing"];
+
+echo "<pre>"; echo "///----idIng  lui mmm : ";
+print_r($Iding2);
+echo "</pre>";
+
 foreach ($ingredients as $i => $nom) {
+
+    $Iding2    = $_POST["id_ing"][$i];
 
     $quantite = $quantiteIngredients[$i];
     $unite    = $uniteIngredients[$i];
 
     // verifier si l'ingredient existe deja ds la bdd ingredient
-    $ingredient = new ingredient();
-    $exist = $ingredient->findBy("nom", $nom);
+    $ingredient2 = new ingredient();
+    
+    //charger l'ingrédient à modifier
+    $ingredient2->load($Iding2);
+
+    echo "<pre>"; echo "///----ingredient OBJETTTTT lui meme : ";
+    print_r($ingredient2);
+    echo "</pre>";
+
+    $exist = $ingredient2->findBy("nom", $nom);
 
     if (!$exist) {
-        $ingredient->set("nom", $nom);
-        $ingredient->set("type", "autre");
-        $ingredient->set("created_at", date("Y-m-d H:i:s"));
+        $ingredient2->set("nom", $nom);
+        $ingredient2->set("type", "autre");
+        $ingredient2->set("created_at", date("Y-m-d H:i:s"));
     
-        $ingredient->update();
+        $ingredient2->update();
+
+        $ingredient2->load($ingredient2->id());
+
+        echo "<pre>"; echo "///----vhager : ";
+        print_r($ingredient2);
+        echo "</pre>";
+
+    
     }
 
-    $ingredientId = $ingredient->id();
 
-//ajouter ds la bdd ingredient recette
+
+
+
+    $ingredientId = $ingredient2->id();
+
+    //modifier ds la bdd ingredient recette
     $recetteIng = new recette_ingredient();
+
+    $recetteIng->load($idsRecetteIngredient[$i]);
+
     $recetteIng->set("recette_id"    , $recette->id());
     $recetteIng->set("ingredient_id" , $ingredientId);
     $recetteIng->set("quantite"      , $quantite);
@@ -115,6 +175,13 @@ foreach ($ingredients as $i => $nom) {
     $recetteIng->set("unite"         , $unite);
 
     $recetteIng->update();
+
+    $recetteIng->load($recetteIng->id());
+
+    echo "<pre>"; echo "///----recette ingredient moif : ";
+    print_r($recetteIng);
+    echo "</pre>";
+    
 }
 
 

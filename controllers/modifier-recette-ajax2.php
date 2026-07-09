@@ -18,18 +18,20 @@ $recetteAllIngredients = new recette_ingredient();
 //recuperer la liste des ingrédients de la recette
 $recetteAllIngredients=$recetteAllIngredients->getIngredientsByRecette($id);
 
-$recetteAllFarines = new recette_ingredient();
+
+
 //recuperer la liste des farines de la recette
+
+$recetteAllFarines = new recette_ingredient();
 $listeFarines = $recetteAllFarines->getFarinesByRecette($id);
 
 
-/*echo "<pre>"; echo "///----liste des ingrédients de la recette : ";
+echo "<pre>"; echo "///----liste des AUTRE ingrédients de la recette : ";
 print_r($recetteAllIngredients);
 echo "</pre>";
 
 echo "<pre>"; echo "++++++---liste des farines de la recette : ";
 print_r($listeFarines);
-echo "</pre>";*/
+echo "</pre>";
 
 require "templates/fragments/form-modifier-recette2.php";
-

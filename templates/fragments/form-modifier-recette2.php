@@ -64,7 +64,21 @@
         <div id="liste-farines">
 
             <?php foreach($listeFarines as $farine): ?>
-                <div class="ligne-farine"> 
+                <div class="ligne-farine">
+
+                    <!----- id de recette_ingredient ------->   
+                    <input
+                        type="hidden"
+                        name="id_recette_ingredient[]"
+                        value="<?= $farine["id"] ?>"
+                    > 
+                    <!----- id de ingredient ------->  
+                    <input
+                        type="hidden"
+                        name="id_ingredient[]"
+                        value="<?= $farine["ingredient_id"] ?>"
+                    > 
+
                     <select
                         name="farines[]"
                         class="select-farine"
@@ -112,6 +126,13 @@
             <?php foreach($recetteAllIngredients as $ingredient): ?>
 
             <div class="ligne-ingredient">
+
+                <!----- id de ingredient ------->   
+                <input
+                    type="hidden"
+                    name="id_ing[]"
+                    value="<?= $ingredient["id"] ?>"
+                > 
 
                 <input type="text" name="ingredients[]"
                     value="<?= $ingredient["nom"] ?>">

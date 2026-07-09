@@ -28,7 +28,9 @@ class recette_ingredient extends _model {
         //parametres : $recetteId : l'id de la recette
         //retour : la liste des ingrédients de la recette
         $sql = "SELECT
+                    recette_ingredients.id,
                     ingredients.nom,
+                    recette_ingredients.ingredient_id,
                     recette_ingredients.quantite,
                     recette_ingredients.unite
                     
@@ -36,6 +38,7 @@ class recette_ingredient extends _model {
                 JOIN ingredients
                 ON recette_ingredients.ingredient_id = ingredients.id
                 WHERE recette_ingredients.recette_id = :id
+                AND ingredients.type = 'autre'
         ";
 
         $req = $this->execute($sql, [
@@ -55,7 +58,9 @@ class recette_ingredient extends _model {
         //parametres : $recetteId : l'id de la recette
         //retour : la liste des farines de la recette
         $sql = "SELECT
+                    recette_ingredients.id,
                     ingredients.nom,
+                    recette_ingredients.ingredient_id,
                     recette_ingredients.quantite,
                     recette_ingredients.unite
                     
