@@ -26,11 +26,11 @@ $recetteAllFarines = new recette_ingredient();
 $listeFarines = $recetteAllFarines->getFarinesByRecette($id);
 
 
-echo "<pre>"; echo "///----liste des AUTRE ingrédients de la recette : ";
+echo "<pre>"; echo "///----liste des AUTRE ingrédients ((((recetteAllIngredients))) de la recette : ";
 print_r($recetteAllIngredients);
 echo "</pre>";
 
-echo "<pre>"; echo "++++++---liste des farines de la recette : ";
+echo "<pre>"; echo "++++++---liste des farines de la recette ((((listeFarines)))) : ";
 print_r($listeFarines);
 echo "</pre>";
 

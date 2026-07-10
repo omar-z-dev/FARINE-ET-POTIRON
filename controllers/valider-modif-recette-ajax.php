@@ -49,25 +49,18 @@ echo "</pre>";*/
 
 //recuperer id des ingredients
 $idIngs               = $_POST["id_ingredient"];
-//recuperer id des recettes_ingredients
-$idsRecetteIngredient = $_POST["id_recette_ingredient"];
-$farines              = $_POST["farines"]; //recup tableau des nom de farines : 
-/*<pre>///----farines : Array
-(
-    [0] => Farine d’orge maltée
-    [1] => Farine de sarrasin bretonne
-)
-</pre>*/
+
+$farines              = $_POST["farines"]; //recup tableau des nom de farines
+
 $quantiteFarines      = $_POST["quantite_farines"];
 $uniteFarines         = $_POST["unite_farines"];   
 
 foreach ($farines as $i => $nom) {
-
-    $idRecetteIngredient = $idsRecetteIngredient[$i];
     $quantite            = $quantiteFarines[$i];
     $unite               = $uniteFarines[$i];
 
     $idIng = $idIngs[$i] ?? 0;
+
     $farine = new ingredient();
 
     if (!empty($idIng)) {
@@ -89,51 +82,34 @@ foreach ($farines as $i => $nom) {
         $farine->set("created_at", date("Y-m-d H:i:s"));
 
         $farine->insert();
+
+        $idIngNew = $farine->id();
     }
 
+    //*****Modifier dans ingredient_recette
 
-
-
-    
-
-    
-    
-    //charger l'ingrédient à modifier
-    $farine->load($idIng);
-
-    // update
-    //assigner les nouvelles valeurs
-   
-
-    $farine->update(); // update dans la table ingredients
-
-
-
-
-
-
-
-
-
-    //$farineId = $farine->id();
-
-    //Modifier dans ingredient_recette
     $recetteFarine = new recette_ingredient();
 
-    $recetteFarine->load($idRecetteIngredient);
+    if (!empty($idRecetteIngredient)) {
 
-    echo "<pre>"; echo "///----recetteFarine ds controleur modif: ";
-    print_r($recetteFarine);
-    echo "</pre>";
+        // Farine existante
+        $recetteFarine->load($idRecetteIngredient);
+    } 
 
-    //assigner les nouvelles valeurs
-    $recetteFarine->set("recette_id"     , $recette->id());
-    $recetteFarine->set("ingredient_id"  , $idIng);
-    $recetteFarine->set("quantite"       , $quantite);
-    $recetteFarine->set("nom_ingredient" , $nom);
-    $recetteFarine->set("unite"          , $unite);
+    $recetteFarine->set("recette_id", $recette->id());
+    $recetteFarine->set("ingredient_id", $idIngNew);
+    $recetteFarine->set("quantite", $quantite);
+    $recetteFarine->set("nom_ingredient", $nom);
+    $recetteFarine->set("unite", $unite);
 
-    $recetteFarine->update(); //update dans la tablerecette_ingredient
+    if (!empty($idRecetteIngredient)) {
+        // Farine existante ds la table recette_ingredient
+        $recetteFarine->update();
+
+    } else {
+        // Nouvelle farine ds la table recette_ingredient
+        $recetteFarine->insert();
+    }
 }
 
 //*!======== Modifier ds la bdd les ingredients =======*//
