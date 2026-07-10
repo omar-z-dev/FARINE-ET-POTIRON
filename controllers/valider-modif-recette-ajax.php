@@ -49,13 +49,15 @@ echo "</pre>";*/
 
 //recuperer id des ingredients
 $idIngs               = $_POST["id_ingredient"];
-
-$farines              = $_POST["farines"]; //recup tableau des nom de farines
-
+//recuperer id des recettes_ingredients
+$idsRecetteIngredient = $_POST["id_recette_ingredient"];
+$farines              = $_POST["farines"]; 
 $quantiteFarines      = $_POST["quantite_farines"];
 $uniteFarines         = $_POST["unite_farines"];   
 
 foreach ($farines as $i => $nom) {
+
+    $idRecetteIngredient = $idsRecetteIngredient[$i] ?? 0;
     $quantite            = $quantiteFarines[$i];
     $unite               = $uniteFarines[$i];
 
@@ -73,6 +75,8 @@ foreach ($farines as $i => $nom) {
         $farine->set("created_at", date("Y-m-d H:i:s"));
 
         $farine->update();
+        $idIngNew = $idIng;
+
 
     } else {
 
@@ -82,7 +86,7 @@ foreach ($farines as $i => $nom) {
         $farine->set("created_at", date("Y-m-d H:i:s"));
 
         $farine->insert();
-
+        
         $idIngNew = $farine->id();
     }
 
