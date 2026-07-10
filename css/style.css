@@ -74,7 +74,7 @@ li {
 
 .container-ajout-recette {
   position: relative;
-  width: 40%;
+  width: 70%;
   padding: 0.5rem;
   border-radius: 10px;
   margin-top: 1rem;
@@ -82,7 +82,7 @@ li {
 }
 .container-modif-recette {
   position: relative;
-  width: 40%;
+  width: 70%;
   padding: 0.5rem;
   border-radius: 10px;
   margin-top: 1rem;

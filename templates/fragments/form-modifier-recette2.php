@@ -133,6 +133,11 @@
                     name="id_ing[]"
                     value="<?= $ingredient["id"] ?>"
                 > 
+                <input
+                    type="hidden"
+                    name="id_recette_ingredient_ing[]"
+                    value="<?= $ingredient["ingredient_id"] ?>"
+                >
 
                 <input type="text" name="ingredients[]"
                     value="<?= $ingredient["nom"] ?>">

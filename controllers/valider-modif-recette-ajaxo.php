@@ -63,57 +63,25 @@ $uniteFarines         = $_POST["unite_farines"];
 
 foreach ($farines as $i => $nom) {
 
+     $idIng = $idIngs[$i] ?? 0;
+
     $idRecetteIngredient = $idsRecetteIngredient[$i];
+    //$idIng               = $idIngs[$i];
     $quantite            = $quantiteFarines[$i];
     $unite               = $uniteFarines[$i];
 
-    $idIng = $idIngs[$i] ?? 0;
     $farine = new ingredient();
-
-    if (!empty($idIng)) {
-
-        // Farine existante
-        $farine->load($idIng);
-
-        $farine->set("nom", $nom);
-        $farine->set("type", "farine");
-        $farine->set("created_at", date("Y-m-d H:i:s"));
-
-        $farine->update();
-
-    } else {
-
-        // Nouvelle farine
-        $farine->set("nom", $nom);
-        $farine->set("type", "farine");
-        $farine->set("created_at", date("Y-m-d H:i:s"));
-
-        $farine->insert();
-    }
-
-
-
-
-    
-
-    
     
     //charger l'ingrédient à modifier
     $farine->load($idIng);
 
     // update
     //assigner les nouvelles valeurs
-   
+    $farine->set("nom", $nom);
+    $farine->set("type", "farine");
+    $farine->set("created_at", date("Y-m-d H:i:s"));
 
     $farine->update(); // update dans la table ingredients
-
-
-
-
-
-
-
-
 
     //$farineId = $farine->id();
 

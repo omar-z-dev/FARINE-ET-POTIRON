@@ -75,9 +75,9 @@ foreach ($farines as $i => $nom) {
 
     $farineId = $farine->id();
 
-
     //ajouter ds la bdd ingredient_recette
     $recetteFarine = new recette_ingredient();
+
     $recetteFarine->set("recette_id", $recette->id());
     $recetteFarine->set("ingredient_id", $farineId);
     $recetteFarine->set("quantite", $quantite);
@@ -86,8 +86,6 @@ foreach ($farines as $i => $nom) {
 
     $recetteFarine->insert();
 }
-
-
 
 //ajouter ds la bdd les ingredients 
 foreach ($ingredients as $i => $nom) {
@@ -119,7 +117,6 @@ foreach ($ingredients as $i => $nom) {
 
     $recetteIng->insert();
 }
-
 
 echo "SUCCESS";
 

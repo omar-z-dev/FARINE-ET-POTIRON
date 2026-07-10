@@ -30,6 +30,7 @@ class recette_ingredient extends _model {
         $sql = "SELECT
                     recette_ingredients.id,
                     ingredients.nom,
+                    ingredients.id,
                     recette_ingredients.ingredient_id,
                     recette_ingredients.quantite,
                     recette_ingredients.unite
