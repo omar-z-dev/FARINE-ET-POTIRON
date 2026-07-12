@@ -155,3 +155,34 @@ foreach ($ingredients as $i => $nom) {
 
 echo "SUCCESS";
 
+
+
+
+
+//*!======== Modifier ds la bdd les farines =======*//
+//*!=================================================*/
+
+//***** Modifier ou ajouter la farine dans ingredient_recette
+
+    $recetteFarine = new recette_ingredient();
+
+    if (!empty($idRecetteIngredient)) {
+
+        // Farine existante
+        $recetteFarine->load($idRecetteIngredient);
+    } 
+
+    $recetteFarine->set("recette_id"     , $recette->id());
+    $recetteFarine->set("ingredient_id"  , $idIngNew);
+    $recetteFarine->set("quantite"       , $quantite);
+    $recetteFarine->set("nom_ingredient" , $nom);
+    $recetteFarine->set("unite"          , $unite);
+
+    if (!empty($idRecetteIngredient)) {
+        // Farine existante ds la table recette_ingredient
+        $recetteFarine->update();
+
+    } else {
+        // Nouvelle farine ds la table recette_ingredient
+        $recetteFarine->insert();
+    }

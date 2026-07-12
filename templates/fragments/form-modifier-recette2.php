@@ -125,34 +125,35 @@
 
             <?php foreach($recetteAllIngredients as $ingredient): ?>
 
-            <div class="ligne-ingredient">
+                <div class="ligne-ingredient">
 
-                <!----- id de ingredient ------->   
-                <input
-                    type="hidden"
-                    name="id_ing[]"
-                    value="<?= $ingredient["id"] ?>"
-                > 
-                <input
-                    type="hidden"
-                    name="id_recette_ingredient_ing[]"
-                    value="<?= $ingredient["ingredient_id"] ?>"
-                >
+                    <!----- id de ingredient ------->   
+                    <input
+                        type="hidden"
+                        name="id_ing[]"
+                        value="<?= $ingredient["ingredient_id"] ?>"
+                    > 
+                    <!----- id d'un enregistrement de la table recette_ingredient -------> 
+                    <input
+                        type="hidden"
+                        name="id_recette_ingredient_ing[]"
+                        value="<?= $ingredient["recette_ingredient_id"] ?>"
+                    >
+                    <!----- nom de ingredient -------> 
+                    <input type="text" name="ingredients[]"
+                        value="<?= $ingredient["nom"] ?>">
+                    <!----- quantité ------->
+                    <input type="number" name="quantite_ingredients[]"
+                        value="<?= $ingredient["quantite"] ?>">
+                    <!----- unite ------->
+                    <input type="text" name="unite_ingredients[]"
+                        value="<?= $ingredient["unite"] ?>">
 
-                <input type="text" name="ingredients[]"
-                    value="<?= $ingredient["nom"] ?>">
+                    <button type="button" onclick="supprimerLigne(this)">
+                        ✖
+                    </button>
 
-                <input type="number" name="quantite_ingredients[]"
-                    value="<?= $ingredient["quantite"] ?>">
-
-                <input type="text" name="unite_ingredients[]"
-                    value="<?= $ingredient["unite"] ?>">
-
-                <button type="button" onclick="supprimerLigne(this)">
-                    ✖
-                </button>
-
-            </div>
+                </div>
 
             <?php endforeach; ?>
 

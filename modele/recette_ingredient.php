@@ -28,16 +28,15 @@ class recette_ingredient extends _model {
         //parametres : $recetteId : l'id de la recette
         //retour : la liste des ingrédients de la recette
         $sql = "SELECT
-                    recette_ingredients.id,
+                    recette_ingredients.id AS recette_ingredient_id,
                     ingredients.nom,
-                    ingredients.id,
+                    ingredients.id AS ingredient_id,
                     recette_ingredients.ingredient_id,
                     recette_ingredients.quantite,
                     recette_ingredients.unite
                     
                 FROM recette_ingredients
-                JOIN ingredients
-                ON recette_ingredients.ingredient_id = ingredients.id
+                JOIN ingredients ON recette_ingredients.ingredient_id = ingredients.id
                 WHERE recette_ingredients.recette_id = :id
                 AND ingredients.type = 'autre'
         ";
