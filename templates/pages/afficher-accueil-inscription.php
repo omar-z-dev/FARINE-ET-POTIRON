@@ -69,6 +69,16 @@
                 <input type="email" name="email" placeholder="Email" ><br><br>
                 <input type="password" name="password" placeholder="Mot de passe" ><br><br>
 
+                <!-- recaptcha -->
+
+                <div 
+                    class="g-recaptcha" data-sitekey="VOTRE_SITE_KEY">
+                </div>
+
+                <br>
+
+
+
                 <button>S'inscrire</button>
 
             </form>
@@ -127,6 +137,8 @@
                 <?php endforeach; ?>
             </ul>
         </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
        
     </body>
 </html>
