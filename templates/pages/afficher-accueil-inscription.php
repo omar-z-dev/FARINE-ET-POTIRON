@@ -72,8 +72,9 @@
                 <!-- recaptcha -->
 
                 <div 
-                    class="g-recaptcha" data-sitekey="VOTRE_SITE_KEY">
+                    class="g-recaptcha" data-sitekey="6LeudFAtAAAAAPQUtTevQqrRFn5eU8tPc6XHy1LC">
                 </div>
+
 
                 <br>
 

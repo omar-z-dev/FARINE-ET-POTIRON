@@ -38,6 +38,44 @@ switch ($action){
 
     case "register":
 
+        //recaptchat 
+
+        $secret = "6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4";
+        $response = $_POST["g-recaptcha-response"];
+
+        $url = "https://www.google.com/recaptcha/api/siteverify";
+
+        $data = [
+            "secret" => $secret,
+            "response" => $response
+        ];
+
+        //Préparer la requête HTTP 6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4
+        $options = [
+            "http" => [
+                "method"  => "POST",
+                "header"  => "Content-type: application/x-www-form-urlencoded",
+                "content" => http_build_query($data) // transforme un tableau en une chaîne de caractères
+            ]
+        ];
+
+        //"Prépare une requête POST avec ces données
+        $context = stream_context_create($options);
+
+        //Envoyer la requête
+        $result = file_get_contents($url, false, $context);
+
+        //La réponse de Google est un JSON donc on le transforme $result->success
+        $result = json_decode($result);
+
+        if (!$result->success) {
+            die("Veuillez valider le reCAPTCHA.");
+        }
+
+
+
+
+        
         $user = new utilisateur();
 
         $pseudo   = trim($_POST["pseudo"]   ?? "");
@@ -110,35 +148,3 @@ switch ($action){
 
 
 
-$secret = "VOTRE_SECRET_KEY";
-$response = $_POST["g-recaptcha-response"];
-
-$url = "https://www.google.com/recaptcha/api/siteverify";
-
-$data = [
-    "secret" => $secret,
-    "response" => $response
-];
-
-
-//Préparer la requête HTTP
-$options = [
-    "http" => [
-        "method"  => "POST",
-        "header"  => "Content-type: application/x-www-form-urlencoded",
-        "content" => http_build_query($data) // transforme un tableau en une chaîne de caractères
-    ]
-];
-
-//"Prépare une requête POST avec ces données
-$context = stream_context_create($options);
-
-//Envoyer la requête
-$result = file_get_contents($url, false, $context);
-
-//La réponse de Google est un JSON donc on le transforme $result->success
-$result = json_decode($result);
-
-if (!$result->success) {
-    die("Veuillez valider le reCAPTCHA.");
-}
