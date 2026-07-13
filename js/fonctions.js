@@ -269,3 +269,69 @@ function chargerCatalogueFarinesModification() {
       });
     });
 }
+
+/********************************************************* */
+
+/*==========================================================  
+         role : remplir la codelist farine ds le formulaire de recherhce d'une recette
+===========================================================*/
+function chargerFarinesRecherche() {
+  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+    .then((response) => response.json())
+
+    .then((data) => {
+      const select = document.getElementById("farine");
+
+      for (const reference in data) {
+        const option = document.createElement("option");
+
+        // la valeur envoyée au serveur
+        option.value = reference;
+
+        // ce que voit l'utilisateur
+        option.textContent = data[reference];
+
+        select.appendChild(option);
+      }
+    });
+}
+chargerFarinesRecherche();
+
+/*==========================================================  
+         role : recherche recette 
+===========================================================*/
+
+let form = document.getElementById("searchForm");
+
+if (form)
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    rechercherRecettes();
+  });
+
+function rechercherRecettes() {
+  console.log("rechercher recettes");
+  let titre = document.querySelector("#titre").value;
+  let difficulte = document.querySelector("#difficulte").value;
+  let duree = document.querySelector("#duree_max").value;
+  let farine = document.querySelector("#farine").value;
+
+  fetch(
+    //transformer un texte pour qu'il puisse être envoyé dans une URL en utilisant encodeURIComponent
+
+    "index.php?page=recherche-recette-ajax" +
+      "&titre=" +
+      encodeURIComponent(titre) +
+      "&difficulte=" +
+      encodeURIComponent(difficulte) +
+      "&duree=" +
+      encodeURIComponent(duree) +
+      "&farine=" +
+      encodeURIComponent(farine),
+  )
+    .then((response) => response.text())
+    .then((html) => {
+      document.querySelector("#resultat-recherche-recette").innerHTML = html;
+    });
+}

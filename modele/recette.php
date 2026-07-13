@@ -45,4 +45,59 @@ class recette extends _model {
             return $objets;
     }
 
+
+     /*=====================================================
+            2.         liste recette recherchées     
+    =======================================================*/  
+
+    function getRecette($titre , $difficulte, $duree_max , $farine) {
+        // Rôle : lister tous les enregistrements de la table
+        // Paramètres : $titre, $difficulte, $duree_max, $farine
+        // Retour : tableau d'objets recette ou false en cas d'erreur
+
+        $sql = "SELECT * FROM `$this->table` WHERE 1";
+        $params = [];
+
+        // Filtre par titre (recherche partielle)
+        if (!empty($titre)) {
+            $sql .= " AND titre LIKE :titre";
+            $params[":titre"] = "%$titre%";
+        }
+
+        // Filtre par difficulté 
+        if (!empty($difficulte)) {
+            $sql .= " AND difficulte = :difficulte";
+            $params[":difficulte"] = $difficulte;
+        }
+
+        // Filtre par durée maximale
+        if (!empty($duree_max)) {
+            $sql .= " AND duree <= :duree_max";
+            $params[":duree_max"] = "%$duree_max%";
+        }
+
+        // Filtre par type de farine
+        if (!empty($farine)) {
+            $sql .= " AND id_farine = :farine";
+            $params[":farine"] = $farine;
+        }
+
+        // Exécution de la requête
+        $req = $this->execute($sql, $params);
+            if ($req === false) {
+                return [];
+            }
+
+            $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
+            $objets  = [];
+            $className = get_class($this);
+
+            foreach ($lignes as $ligne) {
+                $objet = new $className();
+                $objet->loadFromtab($ligne);
+                $objets[] = $objet;
+            }
+            return $objets;
+    }
+
 }

@@ -29,7 +29,7 @@
                 <div>
                     <h2>🔍 Rechercher une recette</h2>
 
-                    <form method="GET" action="recherche-recettes.php">
+                    <form id ="searchForm">
 
                         <!-- titre -->
                         <label for="titre">Nom de la recette :</label><br>
@@ -50,14 +50,10 @@
 
                         <!-- farine -->
                         <label for="farine">Type de farine :</label><br>
+                        
+                        <!-- remplir dynamiquement depuis l api-->
                         <select name="farine" id="farine">
                             <option value="">-- Toutes les farines --</option>
-
-                            <!-- remplir dynamiquement depuis la BDD -->
-                            <option value="blé">Farine de blé</option>
-                            <option value="seigle">Farine de seigle</option>
-                            <option value="maïs">Farine de maïs</option>
-
                         </select><br><br>
 
                         <button type="submit">
@@ -66,6 +62,15 @@
 
                     </form>
                 </div>
+
+
+
+                <!-- affichage des recettes : -->
+
+                <div id="resultat-recherche-recette">
+                </div>
+
+
 
                 <!--bouton de deconnexion : -->
                 <div>

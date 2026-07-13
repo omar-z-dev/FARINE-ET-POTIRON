@@ -43,6 +43,10 @@ switch ($page) {
         require "controllers/valider-modif-recette-ajax.php";
         break;
 
+    case "recherche-recette-ajax":
+        require "controllers/recherche-recette-ajax.php";
+        break;
+
     // par defaut : accueil
     default:
         require "controllers/accueil.php";
