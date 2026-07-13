@@ -7,6 +7,7 @@ require_once __DIR__ . "/../core/model.php";
 class recette extends _model {
 
     protected $table  = "recettes";
+    
     protected $fields = [ 
     "titre", 
     "description" , 
