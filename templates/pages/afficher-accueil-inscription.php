@@ -47,7 +47,7 @@
 
 
             <!-- register : creation de compte-->
-            <form method="POST" action="login-register.php?action=register" novalidate>
+            <form method="POST" action="index.php?page=login-register&action=register" novalidate>
                 <h3>Créer un compte</h3>
 
                 <!-- message d'erreur creation de compte  -->
@@ -62,6 +62,13 @@
                 <?php if (!empty($_SESSION["success_register"])): ?>
                     <p style="color:green; font-weight:bold;"><?= $_SESSION["success_register"] ?></p>
                     <?php unset($_SESSION["success_register"]); ?>
+                <?php endif; ?>
+
+                <!-- message errerir recaptcha  -->
+                 
+                <?php if (!empty($_SESSION["error_recaptcha"])): ?>
+                    <p style="color:red; font-weight:bold;"><?= $_SESSION["error_recaptcha"] ?></p>
+                    <?php unset($_SESSION["error_recaptcha"]); ?>
                 <?php endif; ?>
 
 

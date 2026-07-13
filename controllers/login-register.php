@@ -39,18 +39,22 @@ switch ($action){
     case "register":
 
         //recaptchat 
-
+        
+        //clé secrète ($secret) est le moyen pour ton serveur de s'authentifier auprès de Google.
         $secret = "6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4";
+
+        //Le navigateur envoie au serveur un jeton (g-recaptcha-response). Ce jeton prouve que Google a vu l'utilisateur interagir avec le reCAPTCHA.
         $response = $_POST["g-recaptcha-response"];
 
         $url = "https://www.google.com/recaptcha/api/siteverify";
 
+        // le serveur envoie ce jeton à Google
         $data = [
             "secret" => $secret,
             "response" => $response
         ];
 
-        //Préparer la requête HTTP 6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4
+        //Préparer la requête HTTP
         $options = [
             "http" => [
                 "method"  => "POST",
@@ -65,17 +69,23 @@ switch ($action){
         //Envoyer la requête
         $result = file_get_contents($url, false, $context);
 
-        //La réponse de Google est un JSON donc on le transforme $result->success
+        /*Google vérifie plusieurs éléments :
+        l'utilisateur a-t-il bien cliqué ?
+        le jeton est-il valide ?
+        le jeton n'a-t-il pas expiré ?
+        le jeton provient-il bien de ton site ?
+        le comportement ressemble-t-il à celui d'un humain ou d'un robot ?
+        Google répond avec un JSON.*/
+
         $result = json_decode($result);
 
         if (!$result->success) {
-            die("Veuillez valider le reCAPTCHA.");
+        $_SESSION["error_recaptcha"] = "Veuillez valider le reCAPTCHA.";
+        header("Location:index.php");
+        exit;
         }
 
 
-
-
-        
         $user = new utilisateur();
 
         $pseudo   = trim($_POST["pseudo"]   ?? "");
@@ -85,7 +95,7 @@ switch ($action){
         // verifier si tous les champs sont remplis
         if (empty($pseudo) || empty($email) || empty($password)) {
             $_SESSION["error_register"] = "Tous les champs sont obligatoires ❌";
-            header("Location: accueil.php");
+            header("Location: index.php");
             exit;
         }
 
@@ -95,7 +105,7 @@ switch ($action){
 
             $_SESSION["error_register"] = "Email invalide ❌";
 
-            header("Location: accueil.php");
+            header("Location: index.php");
             exit;
         }
 
@@ -104,7 +114,7 @@ switch ($action){
 
             $_SESSION["error_register"] = "pseudo invalide ❌";
 
-            header("Location: accueil.php");
+            header("Location: index.php");
             exit;
         }
 
@@ -130,15 +140,15 @@ switch ($action){
 
             //message de confirmation de creation de compte
             $_SESSION["success_register"] = "✅ Compte créé avec succes";
-            header("Location: accueil.php");
+            header("Location: index.php");
             exit;
         }
             //message d'erreur création compte
             $_SESSION["error_register"] = "😱 Erreur création compte";
-            require "accueil.php";
+            require "index.php";
             break;
     default:
-    require "accueil.php";
+    require "index.php";
 }
 
 
