@@ -10,13 +10,14 @@
     <table border="1" cellpadding="8">
         <thead>
             <tr>
-                <th>Titre      </th>
-                <th>Description</th>
-                <th>Durée      </th>
-                <th>Difficulté </th>
-                <th>Date de mise à jour</th>
-                <th>Notes    </th>
-                <th>Commentaires    </th>
+                <th>Titre       </th>
+                <th>Description </th>
+                <th>Durée       </th>
+                <th>Difficulté  </th>
+                <th>Date de mise à jour </th>
+                <th>Voir la recette     </th>
+                <th>Notes               </th>
+                <th>Commentaires        </th>
             </tr>
         </thead>
 
@@ -25,7 +26,7 @@
 
                     <!-- ne pas fficher les recette de l'utilisateur connecté -->
 
-                    <?php if ($recette->id() !=   $user->id()): ?>
+                    <?php if ($recette->value("utilisateur_id") !=   $user->id()): ?>
 
                         <tr>
                             <td><?= $recette->html("titre")?>      </td>
@@ -34,6 +35,13 @@
                             <td><?= $recette->html("difficulte")?> </td>
                             <td><?= $recette->html("date_maj")?>   </td>
 
+                            <!-- bouton voir une recette : -->
+                            <td>
+                                <button type="button" onclick="VoirRecette(<?= $recette->id() ?>)">
+                                    Voir
+                                </button>  
+                            </td>
+                            
                             <td>
                                 <?php require "templates/fragments/note-recette.php"; ?>
                             </td>

@@ -47,11 +47,18 @@ switch ($page) {
         require "controllers/recherche-recette-ajax.php";
         break;
 
+    case "commentaire":
+        require "controllers/creer-commentaire.php";
+        break;
+
+    case "valider-commentaire-ajax":
+        require "controllers/valider-commentaire-ajax.php";
+        break;
+
     // par defaut : accueil
     default:
         require "controllers/accueil.php";
 }
-
 
 
 
