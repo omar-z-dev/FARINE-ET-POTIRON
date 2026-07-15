@@ -59,15 +59,21 @@ switch ($page) {
         require "controllers/creer-commentaire.php";
         break;
 
+
     case "valider-note":
         require "controllers/valider-note.php";
         break;
+
+
+    case "catalogue-farines":
+        require "controllers/catalogue-farine.php";
+        break;
+
 
     // par defaut : accueil
     default:
         require "controllers/accueil.php";
 }
-
 
 
 

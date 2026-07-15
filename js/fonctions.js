@@ -138,7 +138,7 @@ function fermerAjoutRecette() {
          role : afficher les farine dispo depuis api
 ===========================================================*/
 function chargerCatalogueFarines() {
-  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+  fetch("index.php?page=catalogue-farines")
     .then((response) => response.json())
     .then((data) => {
       const select = document.querySelector('select[name="farines[]"]');
