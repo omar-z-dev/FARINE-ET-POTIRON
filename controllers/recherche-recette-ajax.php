@@ -7,9 +7,9 @@ require_once "lib/init.php";
 
 $user = userConnected();
 
-echo "<pre>";
+/*echo "<pre>";
 print_r($user->id());
-echo "</pre>";
+echo "</pre>";*/
 
 //recuperer les parametres de recherche
 $titre      = $_GET["titre"] ?? "";
@@ -27,9 +27,9 @@ $listeRecettes = $recette->getRecette(
     $farine
 );
 
-echo "<pre>";
+/*echo "<pre>";
 print_r($listeRecettes);
-echo "</pre>";
+echo "</pre>";*/
 
 
 // Afficher le template  

@@ -61,6 +61,11 @@
                         </button>
 
                     </form>
+                    <!-- message erreur deja commenté-->
+                    <?php if (!empty($_SESSION["error_note"])): ?>
+                        <p style="color:red; font-weight:bold;"><?= $_SESSION["error_note"] ?></p>
+                        <?php unset($_SESSION["error_note"]); ?>
+                    <?php endif; ?>
                 </div>
 
 

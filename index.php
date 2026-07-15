@@ -55,11 +55,18 @@ switch ($page) {
         require "controllers/valider-commentaire-ajax.php";
         break;
 
+    case "creer_commentaire":
+        require "controllers/creer-commentaire.php";
+        break;
+
+    case "valider-note":
+        require "controllers/valider-note.php";
+        break;
+
     // par defaut : accueil
     default:
         require "controllers/accueil.php";
 }
-
 
 
 

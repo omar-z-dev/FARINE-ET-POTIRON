@@ -18,5 +18,18 @@ class commentaire extends _model {
     "recette_id"       => "recettes" 
     ];
 
+    /*=====================================================
+            1.        finf commentaie par recette par utilisateur    
+    =======================================================*/ 
+
+
+    function findByRecetteUtilisateur($recette_id, $utilisateur_id) {
+        $sql = "SELECT * FROM `$this->table` WHERE recette_id = :recette_id AND utilisateur_id = :utilisateur_id";
+        $req = $this->execute($sql, [
+            ":recette_id"     => $recette_id,
+            ":utilisateur_id" => $utilisateur_id
+        ]);
+        return $req->fetch(PDO::FETCH_ASSOC);
+    }
 
 }

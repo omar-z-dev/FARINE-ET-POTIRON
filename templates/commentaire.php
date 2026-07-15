@@ -4,6 +4,12 @@
 
     <h2>Saisir un commentaire</h2>
 
+    <!-- message erreur deja commenté-->
+    <?php if (!empty($_SESSION["error_commentaire"])): ?>
+        <p style="color:red; font-weight:bold;"><?= $_SESSION["error_commentaire"] ?></p>
+        <?php unset($_SESSION["error_commentaire"]); ?>
+    <?php endif; ?>
+
         <!-- ID de la recette -->
         <input
             type="hidden"
