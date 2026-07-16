@@ -20,6 +20,7 @@ switch ($action){
         $verifuser = $user->login($identifiant, $password);
 
         if ($verifuser){
+
             
             //creer la session pour stocker les info de l'utilisateur dans $_SESSION
             //var_dump($user);  exit;
@@ -139,6 +140,7 @@ switch ($action){
 
         $recaptcha = new recaptcha();
 
+        /*Quand l'utilisateur coche le reCAPTCHA Google génère un jeton temporaire (token). Le navigateur l'envoie avec le formulaire  , puis on récupère le jeton de l'utilisateur.*/
         $token = $_POST["g-recaptcha-response"] ?? "";
         
 
