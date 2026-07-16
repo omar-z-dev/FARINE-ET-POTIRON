@@ -28,9 +28,10 @@ function loadModel($name) {
 
 spl_autoload_register("loadModel");
 
-/* ---------------- SESSION ---------------- */
+/* ---------------- SESSION + RECAPTCHA ---------------- */
 
 require_once __DIR__ . "/../lib/session.php";
+require_once __DIR__ . "/../core/recaptcha.php";
 
 
 

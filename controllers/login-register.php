@@ -38,10 +38,10 @@ switch ($action){
 
     case "register":
 
-        //recaptchat 
+       
         
         //clé secrète ($secret) est le moyen pour ton serveur de s'authentifier auprès de Google.
-        $secret = "6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4";
+        /*$secret = "6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4";
 
         //Le navigateur envoie au serveur un jeton (g-recaptcha-response). Ce jeton prouve que Google a vu l'utilisateur interagir avec le reCAPTCHA.
         $response = $_POST["g-recaptcha-response"];
@@ -70,7 +70,6 @@ switch ($action){
         // envoyer la requête
         $result = curl_exec($curl);
 
-
         // vérifier erreur CURL
         if ($result === false) {
             echo "Echec de la requête : " . curl_error($curl);
@@ -85,13 +84,13 @@ switch ($action){
         le comportement ressemble-t-il à celui d'un humain ou d'un robot ?
         Google répond avec un JSON.*/
 
-        $result = json_decode($result);
+        /*$result = json_decode($result);
 
         if (!$result->success) {
         $_SESSION["error_recaptcha"] = "Veuillez valider le reCAPTCHA.";
         header("Location:index.php");
         exit;
-        }
+        }*/
 
 
         $user = new utilisateur();
@@ -133,6 +132,20 @@ switch ($action){
             $_SESSION["error_register"] = "Cet email existe déjà ❌";
 
             header("Location: accueil.php");
+            exit;
+        }
+
+        //************************!recaptchat 
+
+        $recaptcha = new recaptcha();
+
+        $token = $_POST["g-recaptcha-response"] ?? "";
+        
+
+        if (!$recaptcha->verify($token)) {
+
+            $_SESSION["error_recaptcha"] = "Veuillez valider le reCAPTCHA";
+            header("Location:index.php");
             exit;
         }
 
