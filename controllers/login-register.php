@@ -63,8 +63,6 @@ switch ($action){
         // Options CURL
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-
-
         // récupérer la réponse dans une variable
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -75,7 +73,8 @@ switch ($action){
 
         // vérifier erreur CURL
         if ($result === false) {
-            die("Erreur CURL : " . curl_error($curl));
+            echo "Echec de la requête : " . curl_error($curl);
+            exit;
         }
 
         /*Google vérifie plusieurs éléments :
@@ -85,9 +84,6 @@ switch ($action){
         le jeton provient-il bien de ton site ?
         le comportement ressemble-t-il à celui d'un humain ou d'un robot ?
         Google répond avec un JSON.*/
-
-
-
 
         $result = json_decode($result);
 
