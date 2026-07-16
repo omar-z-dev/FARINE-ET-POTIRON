@@ -138,7 +138,7 @@ function fermerAjoutRecette() {
          role : afficher les farine dispo depuis api
 ===========================================================*/
 function chargerCatalogueFarines() {
-  fetch("index.php?page=catalogue-farines")
+  fetch("index.php?page=catalogue-farine")
     .then((response) => response.json())
     .then((data) => {
       const select = document.querySelector('select[name="farines[]"]');
@@ -194,7 +194,7 @@ function ajouterFarine() {
          role : charger catalogue farines
 ===========================================================*/
 function chargerCatalogueFarinesLigneSup(select) {
-  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+  fetch("index.php?page=catalogue-farine")
     .then((response) => response.json())
     .then((data) => {
       for (const reference in data) {
@@ -248,7 +248,7 @@ function supprimerLigne(bouton) {
 
 function chargerCatalogueFarinesModification() {
   console.log("charger  Catalogue   Farines   Modification");
-  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
+  fetch("index.php?page=catalogue-farine")
     .then((response) => response.json())
     .then((data) => {
       document.querySelectorAll(".select-farine").forEach((select) => {
@@ -275,7 +275,8 @@ function chargerCatalogueFarinesModification() {
 /*==========================================================  
          role : remplir la codelist farine ds le formulaire de recherhce d'une recette
 ===========================================================*/
-function chargerFarinesRecherche() {
+/*function chargerFarinesRecherche() {
+  console.log("chargerFarinesRecherche");
   fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
     .then((response) => response.json())
 
@@ -295,7 +296,7 @@ function chargerFarinesRecherche() {
       }
     });
 }
-chargerFarinesRecherche();
+chargerFarinesRecherche();*/
 
 /*==========================================================  
          role : recherche recette 

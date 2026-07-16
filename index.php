@@ -22,7 +22,6 @@ switch ($page) {
         require "templates/fragments/creer-recette2.php";
         break;
         
-
     // cas de validation de la creation d'une recette
     case "valider-creation-recette-ajax":
         require "controllers/valider-creation-recette-ajax.php";
@@ -46,7 +45,7 @@ switch ($page) {
     case "recherche-recette-ajax":
         require "controllers/recherche-recette-ajax.php";
         break;
-
+    //commentaire
     case "commentaire":
         require "controllers/creer-commentaire.php";
         break;
@@ -54,18 +53,18 @@ switch ($page) {
     case "valider-commentaire-ajax":
         require "controllers/valider-commentaire-ajax.php";
         break;
-
+    
     case "creer_commentaire":
         require "controllers/creer-commentaire.php";
         break;
 
-
+    //note
     case "valider-note":
         require "controllers/valider-note.php";
         break;
 
-
-    case "catalogue-farines":
+    //curl
+    case "catalogue-farine":
         require "controllers/catalogue-farine.php";
         break;
 
