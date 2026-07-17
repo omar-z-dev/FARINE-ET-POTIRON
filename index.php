@@ -18,8 +18,8 @@ switch ($page) {
         require "controllers/logout.php";
         break;
 
-    case "creer-recette-ajax":
-        require "templates/fragments/creer-recette2.php";
+    case "creer-recette":
+        require "controllers/creer-recette.php";
         break;
         
     // cas de validation de la creation d'une recette

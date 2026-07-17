@@ -6,11 +6,10 @@ Librairies des fonctions spécifiques générales du projet
          role : afficher formulaire ajout recette 
 ===========================================================*/
 function afficherFormAjout() {
-  fetch("index.php?page=creer-recette-ajax")
+  fetch("index.php?page=creer-recette")
     .then((response) => response.text())
     .then((html) => {
       document.getElementById("zone-ajout-recette").innerHTML = html;
-      chargerCatalogueFarines();
     });
 }
 
@@ -132,26 +131,6 @@ function fermerAjoutRecette() {
   setTimeout(() => {
     document.getElementById("zone-ajout-recette").innerHTML = "";
   }, 80);
-}
-
-/*==========================================================  
-         role : afficher les farine dispo depuis api
-===========================================================*/
-function chargerCatalogueFarines() {
-  fetch("index.php?page=catalogue-farine")
-    .then((response) => response.json())
-    .then((data) => {
-      const select = document.querySelector('select[name="farines[]"]');
-
-      for (const reference in data) {
-        const option = document.createElement("option");
-
-        option.value = data[reference];
-        option.textContent = data[reference];
-
-        select.appendChild(option);
-      }
-    });
 }
 
 /*==========================================================  

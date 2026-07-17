@@ -41,7 +41,19 @@
             <div class="ligne-farine">
 
                 <select name="farines[]">
-                    <option value="">-- Choisir une farine --</option>
+
+                    <option value="">
+                        -- Choisir une farine --
+                    </option>
+
+                    <?php foreach($catalogueFarines as $reference => $nom): ?>
+
+                        <option value="<?= $reference ?>">
+                            <?= $nom ?>
+                        </option>
+
+                    <?php endforeach; ?>
+
                 </select>
                 
                 <input type="number" name="quantite_farines[]"placeholder="Quantité">

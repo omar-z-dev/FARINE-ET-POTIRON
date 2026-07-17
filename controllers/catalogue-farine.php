@@ -1,21 +1,18 @@
 <?php
 
-$url = "https://api.mywebecom.ovh/play/fep/catalogue.php";
+//role : afficher le catalogue de farine via l'api
+//param : neant
 
-//initialisation
-$curl = curl_init($url);
+// Initialisations diverses
+$api = new api();
 
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+//recuperer le catalogue de farine
+$catalogueFarines = $api->getCatalogueFarineByCurl();
 
-$resultat = curl_exec($curl);
-
-if ($resultat === false) {
-    // erreur de la réponse
-    echo "Echec de la requête : " . curl_error($curl);
-    exit;
-}
 
 header("Content-Type: application/json");
 
-echo $resultat;
+//envoyer le catalogue de farine (json)
+echo json_encode($catalogueFarines);
+
 exit;
