@@ -68,6 +68,11 @@ switch ($page) {
         require "controllers/catalogue-farine.php";
         break;
 
+     //voir recette
+    case "voir-recette":
+        require "controllers/voir-recette.php";
+        break;
+
 
     // par defaut : accueil
     default:

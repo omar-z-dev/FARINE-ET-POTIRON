@@ -37,9 +37,9 @@
 
                             <!-- bouton voir une recette : -->
                             <td>
-                                <button type="button" onclick="VoirRecette(<?= $recette->id() ?>)">
+                                <a href="index.php?page=voir-recette&id=<?= $recette->id() ?>">
                                     Voir
-                                </button>  
+                                </a>
                             </td>
                             
                             <td>
