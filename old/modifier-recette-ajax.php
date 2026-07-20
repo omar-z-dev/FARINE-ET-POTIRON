@@ -1,14 +1,13 @@
-<?php
+function ajouterFarine() {
 
-//recuperer l id de la recette
-$id = $_GET["id"];
+    fetch("index.php?page=ligne-farine-ajax")
+        .then(response => response.text())
+        .then(html => {
+            console.log(html);
+            document
+                .getElementById("liste-farines")
+                .insertAdjacentHTML("beforeend", html);
+        })
+        .catch(error => console.error(error));
 
-
-$recetteModel = new recette();
-$recetteModel->load($id);
-
-$recette = $recetteModel;
-
-
-require "templates/fragments/form-modifier-recette.php";
-
+}

@@ -10,9 +10,9 @@ $api = new api();
 $catalogueFarines = $api->getCatalogueFarineByCurl();
 
 
-/*header("Content-Type: application/json");
+header("Content-Type: application/json");
 
 //envoyer le catalogue de farine (json)
 echo json_encode($catalogueFarines);
 
-exit;*/
+exit;

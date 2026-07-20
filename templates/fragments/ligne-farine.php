@@ -3,6 +3,7 @@
 //role : afficher une ligne supplementares de farine
 
 ?>
+
 <div class="ligne-farine">
 
     <select name="farines[]">
@@ -29,5 +30,9 @@
         <option>g</option>
         <option>kg</option>
     </select>
+
+    <button type="button" onclick="supprimerLigne(this)">
+        ❌
+    </button>
 
 </div>
