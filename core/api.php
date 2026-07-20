@@ -32,6 +32,6 @@ class api extends _model{
         }
 
         // Transformer JSON en tableau PHP
-        return json_decode($resultat, true);
+        return json_decode($resultat);
     }
 }

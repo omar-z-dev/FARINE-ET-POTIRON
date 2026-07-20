@@ -73,6 +73,10 @@ switch ($page) {
         require "controllers/voir-recette.php";
         break;
 
+    case "ligne-farine-ajax":
+        require "controllers/ligne-farine-ajax.php";
+        break;
+
 
     // par defaut : accueil
     default:

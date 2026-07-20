@@ -40,3 +40,9 @@ new FormData(this) : fabrique un paquet de données à partir du formulaire.
 fetch(...) : envoie ce paquet au serveur sans quitter la page, puis reçoit la réponse (ex : "OK").
 
 C’est la base de l’AJAX moderne et la solution à votre problème de page blanche.
+
+$secret = "ABC123SECRET";
+
+curl_setopt($curl, CURLOPT_HTTPHEADER, [
+    "Authorization: Bearer ".$secret
+]);

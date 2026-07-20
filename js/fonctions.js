@@ -137,53 +137,13 @@ function fermerAjoutRecette() {
          role : ajouter ligne farine
 ===========================================================*/
 function ajouterFarine() {
-  //récupère le conteneur principal
-  const container = document.getElementById("liste-farines");
-
-  // crée une nouvelle ligne
-  const ligne = document.createElement("div");
-  ligne.classList.add("ligne-farine");
-
-  //construit le HTML de la ligne
-  ligne.innerHTML = `
-        <select name="farines[]">
-            <option value="">-- Choisir une farine --</option>
-        </select>
-
-        <input type="number" name="quantite_farines[]" placeholder="Quantité">
-
-        <select name="unite_farines[]">
-            <option value="g">g</option>
-            <option value="kg">kg</option>
-        </select>
-        <button type="button" onclick="supprimerLigne(this)">
-            ✖
-        </button>
-    `;
-
-  //ajoute la ligne dans la page
-  container.appendChild(ligne);
-
-  //recharge les farines API dans le nouveau select
-  chargerCatalogueFarinesLigneSup(
-    ligne.querySelector('select[name="farines[]"]'),
-  );
-}
-/*==========================================================  
-         role : charger catalogue farines
-===========================================================*/
-function chargerCatalogueFarinesLigneSup(select) {
-  fetch("index.php?page=catalogue-farine")
-    .then((response) => response.json())
-    .then((data) => {
-      for (const reference in data) {
-        const option = document.createElement("option");
-
-        option.value = data[reference];
-        option.textContent = data[reference];
-
-        select.appendChild(option);
-      }
+  fetch("index.php?page=ligne-farine-ajax")
+    .then((response) => response.text())
+    .then((html) => {
+      console.log(html);
+      document
+        .getElementById("liste-farines")
+        .insertAdjacentHTML("beforeend", html);
     });
 }
 
@@ -250,32 +210,6 @@ function chargerCatalogueFarinesModification() {
 }
 
 /********************************************************* */
-
-/*==========================================================  
-         role : remplir la codelist farine ds le formulaire de recherhce d'une recette
-===========================================================*/
-/*function chargerFarinesRecherche() {
-  console.log("chargerFarinesRecherche");
-  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
-    .then((response) => response.json())
-
-    .then((data) => {
-      const select = document.getElementById("farine");
-
-      for (const reference in data) {
-        const option = document.createElement("option");
-
-        // la valeur envoyée au serveur
-        option.value = reference;
-
-        // ce que voit l'utilisateur
-        option.textContent = data[reference];
-
-        select.appendChild(option);
-      }
-    });
-}
-chargerFarinesRecherche();*/
 
 /*==========================================================  
          role : recherche recette 
