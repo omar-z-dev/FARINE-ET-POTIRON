@@ -11,3 +11,20 @@ liste deroulante pour les contact select;
 
 
 
+function chargerCatalogueFarinesModification() {
+  console.log("charger Catalogue Farines Modification");
+
+  fetch("index.php?page=catalogue-farine")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("catalogue reçu :", data);
+
+      document.querySelectorAll(".select-farine").forEach((select) => {
+        console.log("select trouvé :", select);
+
+        const selected = select.dataset.selected;
+
+        console.log("farine existante :", selected);
+      });
+    });
+}

@@ -155,10 +155,10 @@ foreach ($ingredients as $i => $nom) {
         // ingredient existante ds la table recette_ingredient
         $recetteIng->load($idRecetteIngredient);
 
-        echo "<pre>";
+        /*echo "<pre>";
         echo "ID Ing (autres) : ";
         print_r($recetteIng);
-        echo "</pre>";
+        echo "</pre>";*/
 
     }
 

@@ -25,6 +25,9 @@ $recetteAllIngredients=$recetteAllIngredients->getIngredientsByRecette($id);
 $recetteAllFarines = new recette_ingredient();
 $listeFarines = $recetteAllFarines->getFarinesByRecette($id);
 
+/*$api = new api();
+$catalogueFarines = $api->getCatalogueFarineByCurl();*/
+
 
 /*echo "<pre>"; echo "///----liste des AUTRE ingrédients ((((recetteAllIngredients))) de la recette : ";
 print_r($recetteAllIngredients);

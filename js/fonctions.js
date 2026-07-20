@@ -75,6 +75,35 @@ function AfficherFormModifierRecette(id) {
     });
 }
 /*==========================================================  
+         role : chargerCatalogueFarines pour Modification
+===========================================================*/
+
+function chargerCatalogueFarinesModification() {
+  console.log("charger  Catalogue   Farines   Modification");
+  fetch("index.php?page=catalogue-farine")
+    .then((response) => response.json())
+    .then((data) => {
+      document.querySelectorAll(".select-farine").forEach((select) => {
+        const selected = select.dataset.selected;
+
+        for (const reference in data) {
+          const option = document.createElement("option");
+
+          option.value = reference;
+          option.textContent = data[reference];
+          console.log("farine existante :", selected);
+
+          if (reference === selected) {
+            option.selected = true;
+          }
+
+          select.appendChild(option);
+        }
+      });
+    });
+}
+
+/*==========================================================  
          role : validerModificationRecette
 ===========================================================*/
 function validerModificationRecette() {
@@ -182,61 +211,7 @@ function supprimerLigne(bouton) {
   bouton.parentElement.remove();
 }
 
-/*==========================================================  
-         role : chargerCatalogueFarines pour Modification
-===========================================================*/
-
-function chargerCatalogueFarinesModification() {
-  console.log("charger  Catalogue   Farines   Modification");
-  fetch("index.php?page=catalogue-farine")
-    .then((response) => response.json())
-    .then((data) => {
-      document.querySelectorAll(".select-farine").forEach((select) => {
-        const selected = select.dataset.selected;
-
-        for (const reference in data) {
-          const option = document.createElement("option");
-
-          option.value = data[reference];
-          option.textContent = data[reference];
-
-          if (data[reference] === selected) {
-            option.selected = true;
-          }
-
-          select.appendChild(option);
-        }
-      });
-    });
-}
-
 /********************************************************* */
-
-/*==========================================================  
-         role : remplir la codelist farine ds le formulaire de recherhce d'une recette
-===========================================================*/
-/*function chargerFarinesRecherche() {
-  console.log("chargerFarinesRecherche");
-  fetch("https://api.mywebecom.ovh/play/fep/catalogue.php")
-    .then((response) => response.json())
-
-    .then((data) => {
-      const select = document.getElementById("farine");
-
-      for (const reference in data) {
-        const option = document.createElement("option");
-
-        // la valeur envoyée au serveur
-        option.value = reference;
-
-        // ce que voit l'utilisateur
-        option.textContent = data[reference];
-
-        select.appendChild(option);
-      }
-    });
-}
-chargerFarinesRecherche();*/
 
 /*==========================================================  
          role : recherche recette 
