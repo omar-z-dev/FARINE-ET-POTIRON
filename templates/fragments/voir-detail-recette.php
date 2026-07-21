@@ -108,9 +108,9 @@
 
         <div class="ligne-note">
 
-            <strong><?= $note->html("pseudo") ?></strong>
+            <strong><?=htmlspecialchars($note["pseudo"]) ?></strong>
             :
-            <?= $note->html("type") ?>
+            <?= htmlspecialchars($note["type"]) ?>
         </div>
 
     <?php endforeach; ?>
@@ -121,7 +121,7 @@
 
 <!----- COMMENTAIRES -------> 
 
-<h3 style ="color:green">Listes des Commentaires</h3>
+<h3 style="color:green">Liste des commentaires</h3>
 
 <?php if (empty($listeCommentaires)): ?>
 
@@ -131,20 +131,19 @@
 
     <?php foreach ($listeCommentaires as $commentaire): ?>
 
-        <div class="ligne-commentaire">
+        <div class="commentaire">
 
-            <strong><?= $commentaire->html("pseudo")?></strong>
-            <br>
+            <strong><?= htmlspecialchars($commentaire["pseudo"]) ?>:</strong><br>
 
-            <?= $commentaire->html("commentaire") ?>
+            <?= nl2br(htmlspecialchars($commentaire["commentaire"])) ?><br>
 
-            <br>
-
-            
-            <?= $commentaire->get("date_maj") ?>
-        
+            <div style="color:gray; font-size:0.8em ;margin-top: 10px;">
+                <?= $commentaire["date_maj"] ?>
+            </div>
 
         </div>
+
+        <hr>
 
     <?php endforeach; ?>
 

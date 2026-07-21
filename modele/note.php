@@ -48,22 +48,7 @@ class note extends _model {
         $req = $this->execute($sql , [":id" => $idRecette]);
 
         $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
-            $objets = [];
-            
-            // get_class($this) retourne nom de la classe de l'objet courant (ex : "Projet" ou "Utilisateur")
-            $className = get_class($this);
-            
-            foreach ($lignes as $ligne) {
-                // Créer un nouvel objet de la même classe que l'objet courant, le charger avec la ligne, et le stocker dans le tableau des objets
-                $objet = new $className();
-                $objet->loadFromtab($ligne);
-                $objets[] = $objet;
-            }
-            return $objets;
-
-}
-
-    
-
+        return $lignes; 
+    }
 }
 

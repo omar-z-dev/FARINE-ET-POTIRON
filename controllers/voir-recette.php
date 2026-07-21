@@ -25,13 +25,20 @@ $recetteAllIngredients=$recetteAllIngredients->getIngredientsByRecette($id);
 $recetteAllFarines = new recette_ingredient();
 $listeFarines = $recetteAllFarines->getFarinesByRecette($id);
 
-
+//recuperer la liste des commentaires
 $commentaire = new commentaire();
 $listeCommentaires = $commentaire->getCommentairesByRecette($id);
 
 
+/*echo "<pre>"; echo "///----liste des ingrédients ((((recetteAllIngredients))) de la recette : ";
+print_r($listeCommentaires);
+echo "</pre>";*/
+
+//recuperer la liste des notes
 $note = new note();
 $listeNotes = $note->getNotesByRecette($id);
+
+
 
 /*$api = new api();
 
