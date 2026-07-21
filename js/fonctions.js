@@ -89,11 +89,11 @@ function chargerCatalogueFarinesModification() {
         for (const reference in data) {
           const option = document.createElement("option");
 
-          option.value = reference;
+          option.value = data[reference];
           option.textContent = data[reference];
           console.log("farine existante :", selected);
 
-          if (reference === selected) {
+          if (data[reference] === selected) {
             option.selected = true;
           }
 

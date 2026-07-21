@@ -31,10 +31,10 @@ $catalogueFarines = $api->getCatalogueFarineByCurl();*/
 
 /*echo "<pre>"; echo "///----liste des AUTRE ingrédients ((((recetteAllIngredients))) de la recette : ";
 print_r($recetteAllIngredients);
-echo "</pre>";
+echo "</pre>";*/
 
 echo "<pre>"; echo "++++++---liste des farines de la recette ((((listeFarines)))) : ";
 print_r($listeFarines);
-echo "</pre>";*/
+echo "</pre>";
 
 require "templates/fragments/form-modifier-recette2.php";

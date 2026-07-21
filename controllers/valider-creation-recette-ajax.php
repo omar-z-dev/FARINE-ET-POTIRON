@@ -1,4 +1,7 @@
 <?php
+//role : valider la creation d'une nouvelle recette
+
+
 
 // recuperer les données du formulaire
 $utilisateur_id = $_SESSION["id"];
@@ -21,6 +24,11 @@ $ingredients         = $_POST["ingredients"];
 $quantiteIngredients = $_POST["quantite_ingredients"];
 $uniteIngredients    = $_POST["unite_ingredients"];
 
+/*echo "<pre>"; echo "///----farine : ";
+print_r($farines);
+echo "</pre>";*/
+
+
 
 // Vérifier qu'aucun champ n'est vide
 /*if (empty($titre)|| 
@@ -40,9 +48,16 @@ $uniteIngredients    = $_POST["unite_ingredients"];
     exit;
 }*/
 
+
+// Vérifier si une recette avec ce titre existe déjà
+
 //instancier une recette
 $recette = new recette();
 
+if ($recette->findBy("titre", $titre)) {
+    echo "Cette recette existe déjà.";
+    exit;
+}
 $recette->set("utilisateur_id", $utilisateur_id);
 $recette->set("titre", $titre);
 $recette->set("description", $description);

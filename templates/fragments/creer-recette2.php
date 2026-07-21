@@ -48,7 +48,7 @@
 
                     <?php foreach($catalogueFarines as $reference => $nom): ?>
 
-                        <option value="<?= $reference ?>">
+                        <option value="<?= $nom ?>">
                             <?= $nom ?>
                         </option>
 
