@@ -25,6 +25,14 @@ $recetteAllIngredients=$recetteAllIngredients->getIngredientsByRecette($id);
 $recetteAllFarines = new recette_ingredient();
 $listeFarines = $recetteAllFarines->getFarinesByRecette($id);
 
+
+$commentaire = new commentaire();
+$listeCommentaires = $commentaire->getCommentairesByRecette($id);
+
+
+$note = new note();
+$listeNotes = $note->getNotesByRecette($id);
+
 /*$api = new api();
 
 $catalogueFarines = $api->getCatalogueFarineByCurl();

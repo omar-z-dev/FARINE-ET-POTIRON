@@ -70,6 +70,9 @@ $recette->set("date_maj", $date_maj);
 $recette->insert();
 //envoyer un message de confirmation ( sera recup en java pour affichage du messge succes insertion et suppression du formulaire d'ajout de recette)
 
+/*=================================
+        LES FARINES
+==================================*/
 
 //ajouter les farines
 foreach ($farines as $i => $nom) {
@@ -102,6 +105,11 @@ foreach ($farines as $i => $nom) {
 
     $recetteFarine->insert();
 }
+
+
+/*=================================
+        AUTRES INGREDIENTS
+==================================*/
 
 //ajouter ds la bdd les ingredients 
 foreach ($ingredients as $i => $nom) {

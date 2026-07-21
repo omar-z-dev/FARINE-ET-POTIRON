@@ -38,15 +38,10 @@
             value="<?= $recette->html("difficulte") ?>"
             readonly
         >
-
-        <hr>
-
         <!----------------- liste des farines ---------------->
 
         <h3>Farines</h3>
-
         <div id="liste-farines">
-
             <?php foreach ($listeFarines as $farine): ?>
                 <div class="ligne-farine">
 
@@ -56,32 +51,26 @@
                         value="<?= $farine["nom"] ?>"
                         readonly
                     >
-
                     <input
                         type="number"
                         name="quantite_farines[]"
                         value="<?= $farine["quantite"] ?>"
                         readonly
                     >
-
                     <input
                         type="text"
                         name="unite_farines[]"
                         value="<?= $farine["unite"] ?>"
                         readonly
                     >
-
                 </div>
             <?php endforeach; ?>
-
         </div>
-
         <h3>Autres ingrédients</h3>
 
         <!-- liste des ingrédients -->
 
         <div id="liste-ingredients">
-
             <?php foreach($recetteAllIngredients as $ingredient): ?>
 
                 <div class="ligne-ingredient">
@@ -96,14 +85,67 @@
                     <!----- unite ------->
                     <input type="text" name="unite_ingredients[]"
                         value="<?= $ingredient["unite"] ?>">
-
-
                 </div>
-
             <?php endforeach; ?>
+        </div>
+    </form>
+</div>
+
+<hr>
+
+
+<!----- NOTES -------> 
+
+<h3 style ="color:green">Listes des Notes</h3>
+
+<?php if (empty($listeNotes)): ?>
+
+    <p>Aucune note pour cette recette.</p>
+
+<?php else: ?>
+
+    <?php foreach ($listeNotes as $note): ?>
+
+        <div class="ligne-note">
+
+            <strong><?= $note->html("pseudo") ?></strong>
+            :
+            <?= $note->html("type") ?>
+        </div>
+
+    <?php endforeach; ?>
+
+<?php endif; ?>
+
+<hr>
+
+<!----- COMMENTAIRES -------> 
+
+<h3 style ="color:green">Listes des Commentaires</h3>
+
+<?php if (empty($listeCommentaires)): ?>
+
+    <p>Aucun commentaire.</p>
+
+<?php else: ?>
+
+    <?php foreach ($listeCommentaires as $commentaire): ?>
+
+        <div class="ligne-commentaire">
+
+            <strong><?= $commentaire->html("pseudo")?></strong>
+            <br>
+
+            <?= $commentaire->html("commentaire") ?>
+
+            <br>
+
+            
+            <?= $commentaire->get("date_maj") ?>
+        
 
         </div>
 
-    </form>
+    <?php endforeach; ?>
 
-</div>
+<?php endif; ?>

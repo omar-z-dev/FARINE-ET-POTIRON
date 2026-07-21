@@ -247,7 +247,9 @@ class _model {
     
         // Récupérer les paramètres (méthode paramForSql)
         $params = $this->paramForSql();
+
         global $bdd;
+        
         // Exécuter la requête
         $req = $this->execute($sql, $params);
         
@@ -258,6 +260,11 @@ class _model {
         $this->id = $bdd->lastInsertId();
         return true;
     }
+
+    /*function lastInsertId() {
+        global $bdd;
+        return $bdd->lastInsertId();
+    }*/
     /*=====================================================
       3.                 update 
     =======================================================*/

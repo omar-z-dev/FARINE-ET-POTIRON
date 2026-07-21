@@ -31,4 +31,39 @@ class note extends _model {
         return $req->fetch(PDO::FETCH_ASSOC);
     }
 
+    /*=====================================================
+           2. all notes par recette   
+    =======================================================*/
+
+    function getNotesByRecette($idRecette){
+        $sql = "SELECT
+                    notes.type,
+                    utilisateurs.pseudo
+                FROM notes
+                JOIN utilisateurs
+                ON notes.utilisateur_id = utilisateurs.id
+                WHERE notes.recette_id = :id
+                ORDER BY utilisateurs.pseudo";
+
+        $req = $this->execute($sql , [":id" => $idRecette]);
+
+        $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
+            $objets = [];
+            
+            // get_class($this) retourne nom de la classe de l'objet courant (ex : "Projet" ou "Utilisateur")
+            $className = get_class($this);
+            
+            foreach ($lignes as $ligne) {
+                // Créer un nouvel objet de la même classe que l'objet courant, le charger avec la ligne, et le stocker dans le tableau des objets
+                $objet = new $className();
+                $objet->loadFromtab($ligne);
+                $objets[] = $objet;
+            }
+            return $objets;
+
 }
+
+    
+
+}
+

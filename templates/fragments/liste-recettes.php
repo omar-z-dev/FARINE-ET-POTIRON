@@ -38,7 +38,7 @@
                             <button type="button" onclick="VoirRecette()">
                             Voir
                             </button> -->
-                            |
+                            
                             <!-- bouton modifier une recette : -->
                             <button type="button" onclick="AfficherFormModifierRecette(<?= $recette->id() ?>)">
                             Modifier

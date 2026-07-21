@@ -14,7 +14,7 @@ $bdd = new PDO("mysql:host=172.18.0.1;dbname=fep-omar;charset=UTF8", "fep-omar",
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING) ;  // En mise au point seulement
 
 
-/* ---------------- AUTLOAD MODELES ---------------- */
+/* ---------------- AUTLOAD DES MODELES ---------------- */
 
 //!Si tu rencontres une classe inconnue, appelle la fonction loadModel($name)” : en faisant $user = new utilisateur(); PHP cherche la classe utilisateur Il ne la trouve pas encore .Donc il appelle automatiquement :loadModel("utilisateur");
 
