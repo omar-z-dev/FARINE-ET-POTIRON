@@ -25,6 +25,10 @@
                 <!-- formulaire ajouter une recette -->
                 <div id="zone-ajout-recette"></div>
 
+
+                <!-- message recette existante -->
+                <div id="msg-ajout-recette"></div>
+
                 <!-- rechercher recette formulaire -->
                 <div>
                     <h2>🔍 Rechercher une recette</h2>

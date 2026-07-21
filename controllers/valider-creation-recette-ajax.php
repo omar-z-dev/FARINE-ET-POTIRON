@@ -55,9 +55,10 @@ echo "</pre>";*/
 $recette = new recette();
 
 if ($recette->findBy("titre", $titre)) {
-    echo "Cette recette existe déjà.";
-    exit;
+    echo "<span style='color:red; font-weight:bold;'>❌ Cette recette existe déjà.</span>";
+    exit;   
 }
+
 $recette->set("utilisateur_id", $utilisateur_id);
 $recette->set("titre", $titre);
 $recette->set("description", $description);
