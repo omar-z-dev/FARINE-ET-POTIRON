@@ -38,3 +38,10 @@ $note->set("type", $type);
 $note->set("date_maj", date("Y-m-d H:i:s"));
 
 $note->insert();
+
+// Message de succès
+$_SESSION["error_note"] = "✅ Votre note a été ajouté avec succès.";
+
+// Redirection
+header("Location:index.php?page=dashboard");
+exit;

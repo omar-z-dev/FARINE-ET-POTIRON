@@ -50,5 +50,24 @@ class note extends _model {
         $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
         return $lignes; 
     }
+
+    function getNotesUtilisateur($utilisateurId){
+        $sql = "SELECT
+                    notes.id,
+                    notes.type,
+                    notes.date_maj,
+                    recettes.titre
+                FROM notes
+                JOIN recettes
+                ON notes.recette_id = recettes.id
+                WHERE notes.utilisateur_id = :utilisateur_id
+                ORDER BY notes.date_maj DESC";
+
+        $req = $this->execute($sql, [
+            ":utilisateur_id" => $utilisateurId
+        ]);
+
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

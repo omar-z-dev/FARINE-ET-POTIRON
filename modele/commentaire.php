@@ -24,6 +24,11 @@ class commentaire extends _model {
 
 
     function findByRecetteUtilisateur($recette_id, $utilisateur_id) {
+
+        //role : trouver un commentaire par recette par utilisateur
+        // parametres : $recette_id, $utilisateur_id
+        // retour : $ligne
+
         $sql = "SELECT * FROM `$this->table` WHERE recette_id = :recette_id AND utilisateur_id = :utilisateur_id";
         $req = $this->execute($sql, [
             ":recette_id"     => $recette_id,
@@ -37,6 +42,10 @@ class commentaire extends _model {
     =======================================================*/
 
     function getCommentairesByRecette($idRecette){
+        //role : trouver tous les commentaires par recette
+        // parametres : $idRecette
+        // retour : $lignes
+
         $sql = "SELECT
                 commentaires.commentaire,
                 commentaires.date_maj,
@@ -54,4 +63,26 @@ class commentaire extends _model {
 
     }
 
+
+    function getCommentairesUtilisateur($utilisateurId) {
+            //role : trouver tous les commentaires par utilisateur
+            // parametres : $utilisateurId
+            // retour : $lignes
+            $sql = "SELECT
+                    commentaires.id,
+                    commentaires.commentaire,
+                    commentaires.date_maj,
+                    recettes.titre
+                FROM commentaires
+                JOIN recettes
+                ON commentaires.recette_id = recettes.id
+                WHERE commentaires.utilisateur_id = :utilisateur_id
+                ORDER BY commentaires.date_maj DESC";
+
+        $req = $this->execute($sql, [
+            ":utilisateur_id" => $utilisateurId
+        ]);
+
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

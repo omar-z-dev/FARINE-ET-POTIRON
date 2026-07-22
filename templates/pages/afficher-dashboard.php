@@ -80,6 +80,53 @@
                 </div>
 
 
+                <!-- affichage de mes commentaires -->
+                <h2  style="color: red;"> Mes commentaires : </h2>
+
+                <?php foreach ($mesCommentaires as $commentaire): ?>
+
+                    <div class="bloc-commentaire">
+                        <h3>
+                            Recette : <?= htmlspecialchars($commentaire["titre"]) ?>
+                        </h3>
+                        <p>
+                            <?= htmlspecialchars($commentaire["commentaire"]) ?>
+                        </p>
+                        <p><?= date("d/m/Y \à H:i", strtotime($commentaire["date_maj"])) ?></p>
+                        <button>Modifier</button>
+                    </div>
+
+                <?php endforeach; ?>
+
+
+                <!-- affichage de mes notes -->
+
+                <h2 style="color: red;">Mes notes :</h2>
+
+                <?php if (empty($mesNotes)): ?>
+
+                    <p>Vous n'avez donné aucune note.</p>
+
+                <?php else: ?>
+
+                    <?php foreach ($mesNotes as $note): ?>
+
+                        <div class="bloc-note">
+
+                            <h3>Recette : <?= htmlspecialchars($note["titre"]) ?></h3>
+
+                            <p>Note donnée :
+                                <?= htmlspecialchars($note["type"]) ?>
+                            </p>
+
+                            <p><?= date("d/m/Y \à H:i", strtotime($note["date_maj"])) ?></p>
+
+                            <button>Modifier</button>
+                        </div>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
 
                 <!--bouton de deconnexion : -->
                 <div>
