@@ -7,7 +7,7 @@
     
     <h2> liste des recettes </h2>
 
-    <table border="1" cellpadding="8">
+    <table border="1" cellpadding="2">
         <thead>
             <tr>
                 <th>Titre       </th>

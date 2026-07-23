@@ -10,83 +10,98 @@
     <body>
           
         <div class ="container-principal">  
-        
-            <h2>Bienvenue sur votre dashboard <?= $user->html("pseudo") ?> 👋</h2>     
-            
-            <!-- formulaire ajouter une recette -->
-            <div id="liste-recettes">
-                <?php require "templates/fragments/liste-recettes.php"; ?>
-            </div>
-              
-            <div>
-                <!-- formulaire modifier une recette -->
-                <div id="modifier-recette"></div>
 
+            <div>        
+                <h2>Bienvenue sur votre dashboard <?= $user->html("pseudo") ?> 👋</h2>     
+                
                 <!-- formulaire ajouter une recette -->
-                <div id="zone-ajout-recette"></div>
-
-
-                <!-- message recette existante -->
-                <div id="msg-ajout-recette"></div>
-
-                <!-- rechercher recette formulaire -->
+                <div id="liste-recettes">
+                    <?php require "templates/fragments/liste-recettes.php"; ?>
+                </div>
+                
                 <div>
-                    <h2>🔍 Rechercher une recette</h2>
+                    <!-- formulaire modifier une recette -->
+                    <div id="modifier-recette"></div>
 
-                    <form id ="searchForm">
+                    <!-- formulaire ajouter une recette -->
+                    <div id="zone-ajout-recette"></div>
 
-                        <!-- titre -->
-                        <label for="titre">Nom de la recette :</label><br>
-                        <input type="text" name="titre" id="titre" placeholder="Ex : Crêpes"><br><br>
 
-                        <!-- difficulté -->
-                        <label for="difficulte">Difficulté :</label><br>
-                        <select name="difficulte" id="difficulte">
-                            <option value="">-- Toutes --</option>
-                            <option value="très facile">Très facile</option>
-                            <option value="facile">Facile</option>
-                            <option value="difficile">Difficile</option>
-                        </select><br><br>
+                    <!-- message recette existante -->
+                    <div id="msg-ajout-recette"></div>
 
-                        <!-- durée -->
-                        <label for="duree_max">Durée maximale (minutes) :</label><br>
-                        <input type="number" name="duree_max" id="duree_max" min="0"><br><br>
+                    <!-- rechercher recette formulaire -->
+                    <div>
+                        <h2>🔍 Rechercher une recette</h2>
 
-                        <!-- farine -->
-                        <label for="farine">Type de farine :</label><br>
-                        
-                        <!-- remplir dynamiquement depuis l api-->
-                        <select name="farine" id="farine">
-                            <option value="">-- Toutes les farines --</option>
-                        </select><br><br>
+                        <form id ="searchForm">
 
-                        <button type="submit">
-                            Rechercher
-                        </button>
+                            <!-- titre -->
+                            <label for="titre">Nom de la recette :</label><br>
+                            <input type="text" name="titre" id="titre" placeholder="Ex : Crêpes"><br><br>
 
-                    </form>
-                    <!-- message erreur deja commenté-->
-                    <?php if (!empty($_SESSION["error_note"])): ?>
-                        <p style="color:red; font-weight:bold;"><?= $_SESSION["error_note"] ?></p>
-                        <?php unset($_SESSION["error_note"]); ?>
-                    <?php endif; ?>
+                            <!-- difficulté -->
+                            <label for="difficulte">Difficulté :</label><br>
+                            <select name="difficulte" id="difficulte">
+                                <option value="">-- Toutes --</option>
+                                <option value="très facile">Très facile</option>
+                                <option value="facile">Facile</option>
+                                <option value="difficile">Difficile</option>
+                            </select><br><br>
+
+                            <!-- durée -->
+                            <label for="duree_max">Durée maximale (minutes) :</label><br>
+                            <input type="number" name="duree_max" id="duree_max" min="0"><br><br>
+
+                            <!-- farine -->
+                            <label for="farine">Type de farine :</label><br>
+                            
+                            <!-- remplir dynamiquement depuis l api-->
+                            <select name="farine" id="farine">
+
+                                <option value="">-- Toutes les farines --</option>
+
+                                <?php foreach ($catalogueFarines as $reference => $nom): ?>
+
+                                    <option value="<?= $nom ?>">
+                                        <?= htmlspecialchars($nom) ?>
+                                    </option>
+
+                                <?php endforeach; ?>
+
+                            </select>
+
+                            <button type="submit">
+                                Rechercher
+                            </button>
+
+                        </form>
+                        <!-- message erreur deja commenté-->
+                        <?php if (!empty($_SESSION["error_note"])): ?>
+                            <p style="color:red; font-weight:bold;"><?= $_SESSION["error_note"] ?></p>
+                            <?php unset($_SESSION["error_note"]); ?>
+                        <?php endif; ?>
+                    </div>
+
+
+
+                    <!-- affichage des recettes : -->
+
+                    <div id="resultat-recherche-recette">
+                    </div>
+
                 </div>
 
+            </div>
 
-
-                <!-- affichage des recettes : -->
-
-                <div id="resultat-recherche-recette">
-                </div>
-
-
+            <div>
                 <!-- affichage de mes commentaires -->
                 <h2  style="color: red;"> Mes commentaires : </h2>
 
                 <?php foreach ($mesCommentaires as $commentaire): ?>
 
                     <div class="bloc-commentaire">
-                        <h3>
+                        <h3 style="text-decoration: underline">
                             Recette : <?= htmlspecialchars($commentaire["titre"]) ?>
                         </h3>
                         <p>
@@ -113,7 +128,7 @@
 
                         <div class="bloc-note">
 
-                            <h3>Recette : <?= htmlspecialchars($note["titre"]) ?></h3>
+                            <h3 style="text-decoration: underline">Recette : <?= htmlspecialchars($note["titre"]) ?></h3>
 
                             <p>Note donnée :
                                 <?= htmlspecialchars($note["type"]) ?>
@@ -137,7 +152,8 @@
                     </a>
                 
                 </div>
-            </div>
+            <div>
+            
         </div> 
 
 

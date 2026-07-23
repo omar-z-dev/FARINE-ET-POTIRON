@@ -26,5 +26,9 @@ $mesNotes = $note->getNotesUtilisateur(
     userConnected()->id()
 );
 
+//recup catalogue farine
+$api = new api(); 
+$catalogueFarines = $api->getCatalogueFarineByCurl();
+
 // Afficher le template  
 require "templates/pages/afficher-dashboard.php";

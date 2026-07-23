@@ -56,8 +56,15 @@ class recette extends _model {
         // Paramètres : $titre, $difficulte, $duree_max, $farine
         // Retour : tableau d'objets recette ou false en cas d'erreur
 
-        $sql = "SELECT * FROM `$this->table` WHERE 1";
-        $params = [];
+        $sql = "SELECT DISTINCT recettes.*
+                FROM recettes
+                LEFT JOIN recette_ingredients
+                    ON recettes.id = recette_ingredients.recette_id
+                LEFT JOIN ingredients
+                    ON recette_ingredients.ingredient_id = ingredients.id
+                WHERE 1";
+
+                $params = [];
 
         // Filtre par titre (recherche partielle)
         if (!empty($titre)) {
@@ -74,12 +81,12 @@ class recette extends _model {
         // Filtre par durée maximale
         if (!empty($duree_max)) {
             $sql .= " AND duree <= :duree_max";
-            $params[":duree_max"] = "%$duree_max%";
+            $params[":duree_max"] = $duree_max;
         }
 
         // Filtre par type de farine
         if (!empty($farine)) {
-            $sql .= " AND id_farine = :farine";
+            $sql .= " AND ingredients.nom = :farine";
             $params[":farine"] = $farine;
         }
 
@@ -90,6 +97,8 @@ class recette extends _model {
             }
 
             $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
+            echo "<pre>";
+
             $objets  = [];
             $className = get_class($this);
 
