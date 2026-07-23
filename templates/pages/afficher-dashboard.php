@@ -71,6 +71,8 @@
 
                             </select>
 
+                            <br><br>
+
                             <button type="submit">
                                 Rechercher
                             </button>
@@ -83,17 +85,11 @@
                         <?php endif; ?>
                     </div>
 
-
-
                     <!-- affichage des recettes : -->
 
-                    <div id="resultat-recherche-recette">
-                    </div>
-
+                    <div id="resultat-recherche-recette"></div>
                 </div>
-
             </div>
-
             <div>
                 <!-- affichage de mes commentaires -->
                 <h2  style="color: red;"> Mes commentaires : </h2>
@@ -107,7 +103,7 @@
                         <p>
                             <?= htmlspecialchars($commentaire["commentaire"]) ?>
                         </p>
-                        <p><?= date("d/m/Y \à H:i", strtotime($commentaire["date_maj"])) ?></p>
+                        <p style="font-size: 12px;"><?= date("d/m/Y \à H:i", strtotime($commentaire["date_maj"])) ?></p>
                         <button>Modifier</button>
                     </div>
 
@@ -134,7 +130,7 @@
                                 <?= htmlspecialchars($note["type"]) ?>
                             </p>
 
-                            <p><?= date("d/m/Y \à H:i", strtotime($note["date_maj"])) ?></p>
+                            <p style="font-size: 12px;"><?= date("d/m/Y \à H:i", strtotime($note["date_maj"])) ?></p>
 
                             <button>Modifier</button>
                         </div>

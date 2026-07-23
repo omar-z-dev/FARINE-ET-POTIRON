@@ -33,12 +33,7 @@
                         <td><?= $recette->html("duree")?> min  </td>
                         <td><?= $recette->html("difficulte")?> </td>
                         <td><?= $recette->html("date_maj")?>   </td>
-                        <td>
-                            <!-- bouton voir une recette : 
-                            <button type="button" onclick="VoirRecette()">
-                            Voir
-                            </button> -->
-                            
+                        <td>                         
                             <!-- bouton modifier une recette : -->
                             <button type="button" onclick="AfficherFormModifierRecette(<?= $recette->id() ?>)">
                             Modifier
