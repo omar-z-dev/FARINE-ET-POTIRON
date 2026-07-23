@@ -5,9 +5,9 @@
 <!-- liste de mes recettes -->
 <div id="recherche-liste-recette">
     
-    <h2> liste des recettes </h2>
+    <h2 style="color: red;"> Liste des recettes </h2>
 
-    <table border="1" cellpadding="2">
+    <table class ="tabled" border="1" cellpadding="8" >
         <thead>
             <tr>
                 <th>Titre       </th>

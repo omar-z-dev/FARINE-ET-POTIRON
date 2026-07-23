@@ -1,3 +1,4 @@
+
 <div class="container-modif-recette">
 
     <h2>
@@ -91,48 +92,33 @@
     </form>
 </div>
 
-<hr>
-
-
 <!----- NOTES -------> 
 
 <h3 style ="color:green">Listes des Notes</h3>
-
 <?php if (empty($listeNotes)): ?>
-
     <p>Aucune note pour cette recette.</p>
-
 <?php else: ?>
-
     <?php foreach ($listeNotes as $note): ?>
 
         <div class="ligne-note">
-
             <strong><?=htmlspecialchars($note["pseudo"]) ?></strong>
             :
             <?= htmlspecialchars($note["type"]) ?>
         </div>
-
+        <br>
     <?php endforeach; ?>
-
 <?php endif; ?>
-
 <hr>
 
 <!----- COMMENTAIRES -------> 
 
 <h3 style="color:green">Liste des commentaires</h3>
-
 <?php if (empty($listeCommentaires)): ?>
-
     <p>Aucun commentaire.</p>
 
 <?php else: ?>
-
     <?php foreach ($listeCommentaires as $commentaire): ?>
-
         <div class="commentaire">
-
             <strong><?= htmlspecialchars($commentaire["pseudo"]) ?>:</strong><br>
 
             <?= nl2br(htmlspecialchars($commentaire["commentaire"])) ?><br>
@@ -140,11 +126,7 @@
             <div style="color:gray; font-size:0.8em ;margin-top: 10px;">
                 <?= $commentaire["date_maj"] ?>
             </div>
-
         </div>
-
-        <hr>
-
+        <br>
     <?php endforeach; ?>
-
 <?php endif; ?>

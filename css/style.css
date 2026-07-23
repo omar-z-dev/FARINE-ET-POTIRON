@@ -82,11 +82,12 @@ li {
 }
 .container-modif-recette {
   position: relative;
-  width: 100%;
+  width: 90%;
   padding: 0.5rem;
   border-radius: 10px;
   margin-top: 1rem;
   box-shadow: 0px 0px 15px rgb(107, 91, 91);
+  background-color: #c2bbbb;
 }
 
 #fermer-profil {
@@ -138,4 +139,16 @@ li {
 #resultat-recherche-recette a {
   text-decoration: none;
   font-weight: bold;
+}
+
+/***************************/
+.tabled {
+  width: 100%;
+}
+
+.tabled th,
+.tabled td {
+  padding: 8px;
+  white-space: normal;
+  font-size: large;
 }

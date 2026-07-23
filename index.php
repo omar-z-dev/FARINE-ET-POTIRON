@@ -3,6 +3,20 @@ require_once "lib/init.php";
 
 $page = $_GET["page"] ?? "accueil";
 
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Farine Potiron</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<?php
+
 switch ($page) {
 
     case "dashboard":
