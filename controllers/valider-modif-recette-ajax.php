@@ -1,4 +1,5 @@
 <?php
+//role : valider la modif d'une recette
 
 // recuperer les données du formulaire
 $utilisateur_id = $_SESSION["id"];

@@ -1,4 +1,5 @@
 <?php
+//role : ajouter un commentaire
 
 //recuperer les parametres
 

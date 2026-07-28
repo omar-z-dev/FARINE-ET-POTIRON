@@ -1,5 +1,5 @@
 <?php
-// message de deconnection de l'utilisateur
+//role : afficher la page dashboard
 
 //recuperer l'utilisateur connecté
 $user = userConnected();

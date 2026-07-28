@@ -1,5 +1,7 @@
 <?php
-// ---------------------------
+//role : afficher la page accueil
+//parametre : aucun
+//retour : affiche la page accueil
 
 
 //ttes les recettes 

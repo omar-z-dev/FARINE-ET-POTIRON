@@ -1,4 +1,5 @@
 <?php
+//role : fermer la session et rediriger vers la page d'accueil
 
 // deconnecter l'utilisateur
 

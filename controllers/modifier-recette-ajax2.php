@@ -1,5 +1,7 @@
 <?php
 
+//role : afficher la page de modif d'une recette
+
 //recuperer l id de la recette
 $id = $_GET["id"];
 

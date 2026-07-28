@@ -1,5 +1,5 @@
 <?php
-
+//role : afficher une ligne supplementares de farine
 
 $api = new api();
 

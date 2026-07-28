@@ -1,5 +1,5 @@
 <?php
-
+//role : afficher liste de mes recettes
 
 //recuperer l'utilisateur connecté
 $user = userConnected();

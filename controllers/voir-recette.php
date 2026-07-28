@@ -1,4 +1,5 @@
 <?php
+//role : afficher une recette
 
 //recuperer l id de la recette
 $id = $_GET["id"];

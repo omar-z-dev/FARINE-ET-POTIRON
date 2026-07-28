@@ -1,4 +1,5 @@
 <?php
+//role : afficher la page de login ou de register
 
 // Récupération des paramètres pour differencier entre login ou register
 $action = $_GET["action"] ?? "";
